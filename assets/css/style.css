@@ -20,6 +20,7 @@ main {
     position: fixed;
     background-color: #1F1E1F;
     transition: width 200ms ease;
+    z-index: 1;
 }
 
 .navbar-nav {
@@ -89,6 +90,50 @@ main {
     padding-left: 0.5rem;
 }
 
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Main Solver */
+
+/* Form */
+#solver-form {
+    text-align: center;
+    height: 20vh;
+}
+
+.solver-buttons {
+    height: 80vh;
+    text-align: center;
+    bottom:0; 
+}
+
+.results-container {
+    display: flex;
+    padding: 3rem;
+}
+
+.reveal-buttons {
+    order:1;
+    display: flex;
+    flex-direction: column;
+}
+
+.solver-results {
+    text-align: center;
+    font-size: 1.5rem;
+    order: 4;
+}
+
+.step {
+    background-color: #fafafa;
+    visibility: hidden;
+}
+
+.step-text {
+    color: grey;
+}
+
+#answer .step-equation {
+    background-color: lightblue;
+}
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Hover Media Queries */
 
 @media (hover: hover) {
@@ -120,6 +165,7 @@ main {
 
 /* Small screens */
 @media only screen and (max-width: 850px) {
+    
     .navbar {
         top: 0;
         width: 100vw;
@@ -159,6 +205,6 @@ main {
     }
 
     main {
-        margin: 0;
+        margin: 5rem 0 0;
     }
 }
