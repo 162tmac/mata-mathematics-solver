@@ -48,19 +48,64 @@
             </nav>
         </header>
         
-        <section class="side-calculator">
-            <div>
-                <button id="calculator-reveal-button">+</button>
+        <section>
+            <div class="side-calculator noJS" onclick="showSidebar()">
+                <button id="calculator-reveal-button"><i class="fas fa-calculator"></i></button>
+                <div class="calculator-container">
+                    <div class="calculator">
+                        <div class="calculator-display">0</div>
+
+                        <div class="calculator-keys">
+                            <button>7</button>
+                            <button>8</button>
+                            <button>9</button>
+                            <button class="key--operator" data-action="add">+</button>
+                            <button>4</button>
+                            <button>5</button>
+                            <button>6</button>
+                            <button class="key--operator" data-action="subtract">-</button>
+                            <button>1</button>
+                            <button>2</button>
+                            <button>3</button>
+                            <button class="key--operator" data-action="multiply">&times;</button>
+                            <button>0</button>
+                            <button data-action="decimal">.</button>
+                            <button data-action="backspace"><i class="fas fa-backspace"></i></button>
+                            <button class="key--operator" data-action="divide">÷</button>
+                            <button class="key--AC" data-action="clear">AC</button>
+                            <button class="key--equal" data-action="calculate">=</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
         
         <main class="solver">
+            <div class="calculator-blocker" onclick="hideSidebar()"></div>
             <form id="solver-form">
                 <input type="text" id="solver-form-input">
                 <input type="submit" value="Submit">
             </form>
             <section class="solver-buttons">
-                <h1>Solver Buttons</h1>
+                <div id="math-buttons">
+                    <button class="key--operator" data-action="add">+</button>
+                    <button class="key--operator" data-action="subtract">-</button>
+                    <button class="key--operator" data-action="multiply">&times;</button>
+                    <button class="key--operator" data-action="divide">÷</button>
+                    <button>7</button>
+                    <button>8</button>
+                    <button>9</button>
+                    <button>4</button>
+                    <button>5</button>
+                    <button>6</button>
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>0</button>
+                    <button data-action="decimal">.</button>
+                    <button data-action="clear">AC</button>
+                    <button class="key--equal" data-action="calculate">=</button>
+                </div>
             </section>
             <section class="results"> 
                 <div class="results-container">
@@ -74,9 +119,7 @@
             </section>
         </main>
 
-
-        
         <script src="assets/js/main.js"></script>
-        
+        <script src="assets/js/calculator.js"></script>
     </body>
 </html>
