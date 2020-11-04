@@ -9,7 +9,6 @@ body {
 
 main {
     margin-left: 6rem;
-    padding: 1rem;
 }
 
 input:hover, input:active, input:focus,
@@ -174,7 +173,7 @@ button:hover, button:active, button:focus {
 }
 
 .calculator-display {
-    height: 10%;
+    min-height: 15%;
     background-color: #0C0C0C;
     color: #fff;
     font-size: 2.5em;
@@ -184,8 +183,18 @@ button:hover, button:active, button:focus {
     border-radius: 5px 5px 0 0;
 }
 
+#display-previous {
+    font-size: 1rem;
+    color: lightgray;
+    margin-bottom: 0.5rem;
+}
+
+#display-current {
+    word-wrap: break-word; 
+}
+
 .calculator-keys {
-    height: 90%;
+    height: 85%;
     background-color: #1F1E1F;
     display: grid;
     gap: 0;
@@ -219,11 +228,12 @@ button:hover, button:active, button:focus {
   background-color: #eee;
 }
 
-.key--AC {
+.key--clear {
+    background-color: rgb(184, 121, 61);
     grid-column: 1 / span 2;
 }
 
-.key--equal {
+.key--equals {
     background-color: #3D7AB8;
     grid-column: 3 / span 2;
 }
@@ -235,6 +245,7 @@ button:hover, button:active, button:focus {
 #solver-form {
     text-align: center;
     height: 20vh;
+    padding: 1rem;
 }
 
 /* ~~~~~~ Solver Buttons ~~~~~~ */
@@ -371,7 +382,7 @@ button:hover, button:active, button:focus {
         padding: 0;
     }
 
-    .side-calculator.noJS:hover {
+    .side-calculator.closed:hover {
         cursor: pointer;
         width: 5rem;
         background-color: #343233;
@@ -380,8 +391,8 @@ button:hover, button:active, button:focus {
         color: #3D7AB8;
     }
 
-    #calculator-reveal-button.noJS:hover, .side-calculator.noJS:hover #calculator-reveal-button,
-    .side-calculator.noJS:hover .fa-calculator {
+    #calculator-reveal-button.closed:hover, .side-calculator.closed:hover #calculator-reveal-button,
+    .side-calculator.closed:hover .fa-calculator {
         cursor: pointer;
         filter: grayscale(0%) opacity(1);
         background: #343233;
