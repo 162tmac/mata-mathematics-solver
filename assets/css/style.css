@@ -9,6 +9,7 @@ body {
 
 main {
     margin-left: 6rem;
+    margin-right: 1rem;
 }
 
 input:hover, input:active, input:focus,
@@ -241,27 +242,59 @@ button:hover, button:active, button:focus {
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Main Solver */
 
-/* ~~~~~~ Form ~~~~~~ */
-#solver-form {
-    text-align: center;
-    height: 20vh;
+/* ~~~~~~ Solver Input ~~~~~~ */
+
+.solver-input {
     padding: 1rem;
+    height: 15vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#methods-selector {
+    margin-right: 1rem;
+}
+
+#solver-form {
+    
 }
 
 /* ~~~~~~ Solver Buttons ~~~~~~ */
 
 .solver-buttons {
+    width: 100%;
     height: 80vh;
     text-align: center;
     bottom:0; 
-    background-color: lightblue;
+    background-color: #3D7AB8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #math-buttons {
-    display: flex;
+    background-color: #343233;
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 0.5rem;
     justify-content: space-evenly;
+    width: 80%;
+    height: 80%;
+    padding: 1rem;
+    font-size: 2rem;
 }
 
+#math-buttons > button {
+    background-color: #fafafa;
+    border-color: #fafafa;
+    font-size: 1em;
+    height: 4rem;
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+}
 
 /* ~~~~~~ Results ~~~~~~ */
 
@@ -356,6 +389,10 @@ button:hover, button:active, button:focus {
         left: auto;
         top: -50px;
         margin: 0 auto;
+    }
+
+    #math-buttons {
+        grid-template-columns: repeat(5, 1fr);
     }
 }
 

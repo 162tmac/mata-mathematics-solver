@@ -3,10 +3,11 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
         <link rel="stylesheet" href="assets/css/style.css">
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
         <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
         <title>MATA</title>
         
     </head>
@@ -84,13 +85,120 @@
         
         <main class="solver">
             <div class="calculator-blocker" onclick="hideSidebar()"></div>
-            <form id="solver-form">
-                <input type="text" id="solver-form-input">
-                <input type="submit" value="Submit">
-            </form>
+
+            <section class="solver-input">
+                <select name="methods-selector" id="methods-selector">
+                    <option value="solve">Solve</option>
+                    <option value="simplify">Simplify</option>
+                    <option value="differentiate">Differentiate</option>
+                    <option value="integrate">Integrate</option>
+                </select>
+                <form id="solver-form">
+                    <input type="text" id="solver-form-input">
+                    <input type="submit" value="Submit" id="solver-form-submit">
+                </form>
+            </section>
+
             <section class="solver-buttons">
                 <div id="math-buttons">
-                    
+                    <!-- Row 1 -->
+                    <button id="log">\[\large\log\]</button>
+                    <button id="log-base">\[\large\log_&#9744;\]</button>
+                    <button id="natural-log">ln</button>
+                    <button id="open-bracket">(</button>
+                    <button id="close-bracket">)</button>
+                    <button id="key--7">7</button>
+                    <button id="key--8">8</button>
+                    <button id="key--9">9</button>
+                    <button id="key--plus">+</button>
+                    <!-- Row 2 -->
+                    <button id="sin">sin</button>
+                    <button id="cos">cos</button>
+                    <button id="tan">tan</button>
+                    <button id="indices">( )<sup>&#9744;</sup></button>
+                    <button id="squared">( )&sup2;</button>
+                    <button id="key--4">4</button>
+                    <button id="key--5">5</button>
+                    <button id="key--6">6</button>
+                    <button id="key--minus">-</button>
+                    <!-- Row 3 -->
+                    <button id="integral-limits">\[\tiny\int_&#9744;^&#9744;\]</button>
+                    <button id="integral">\[\tiny\int\]</button>
+                    <button id="differentiate">\[\tiny\frac{d&#9744;}{dx}\]</button>
+                    <button id="root">\[\tiny\sqrt[&#9744;]{&#9744;}\]</button>
+                    <button id="sqaure-root">\[\tiny\sqrt{&#9744;}\]</button>
+                    <button id="key--1">1</button>
+                    <button id="key--2">2</button>
+                    <button id="key--3">3</button>
+                    <button id="key--multiply">&times;</button>
+                    <!-- Row 4 -->
+                    <button id="limit-infinity">\[\tiny \lim_{x\to\infty} \]</button>
+                    <button id="limit-positive">\[\tiny \lim_{x\to0+} \]</button>
+                    <button id="limit-negative">\[\tiny \lim_{x\to0-} \]</button>
+                    <button id="less-than">&lt;</button>
+                    <button id="greater-than">&gt;</button>
+                    <button id="key--0">0</button>
+                    <button id="key--decimal">.</button>
+                    <button id="key--backspace"><i class="fas fa-backspace"></i></button>
+                    <button id="key--divide">÷</button>
+                    <!-- Row 5 -->
+                    <button id="infinity">&infin;</button>
+                    <button id="pi">&pi;</button>
+                    <button id="theta">&theta;</button>
+                    <button id="less-than-equal">&le;</button>
+                    <button id="greater-than-equal">&ge;</button>
+                    <button id="key--clear">AC</button>
+                    <button id="key--equals">=</button>
+                    <!-- Row 1
+                    <button><img src="assets/images/log.png" alt="Log"></button>
+                    <button><img src="assets/images/log_base.png" alt="Log Base"></button>
+                    <button>ln</button>
+                    <button>(</button>
+                    <button>)</button>
+                    <button>7</button>
+                    <button>8</button>
+                    <button>9</button>
+                    <button>+</button>
+                    Row 2 
+                    <button>sin</button>
+                    <button>cos</button>
+                    <button>tan</button>
+                    <button>( )<sup>&#9744;</sup></button>
+                    <button>( )&sup2;</button>
+                    <button>4</button>
+                    <button>5</button>
+                    <button>6</button>
+                    <button>-</button>
+                    Row 3
+                    <button><img src="assets/images/integral_lims.png" alt="Integral with Limits"></button>
+                    <button><img src="assets/images/integral.png" alt="Integral"></button>
+                    <button><img src="assets/images/differential.png" alt="Differentiate"></button>
+                    <button><img src="assets/images/root.png" alt="Root"></button>
+                    <button><img src="assets/images/sqrt.png" alt="Square Root"></button>
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>&times;</button>
+                    Row 4
+                    <button><img src="assets/images/limit_infty.png" alt="Limit to Infinity"></button>
+                    <button><img src="assets/images/limit_zero_p.png" alt="Limit to 0 Positive"></button>
+                    <button><img src="assets/images/limit_zero_n.png" alt="Limit to 0 Negative"></button>
+                    <button>&lt;</button>
+                    <button>&gt;</button>
+                    <button>0</button>
+                    <button>.</button>
+                    <button><i class="fas fa-backspace"></i></button>
+                    <button>÷</button>
+                    Row 5
+                    <button>&infin;</button>
+                    <button>&pi;</button>
+                    <button>&theta;</button>
+                    <button>&le;</button>
+                    <button>&ge;</button>
+                    <button>AC</button>
+                    <button>AC</button>
+                    <button>=</button>
+                    <button>=</button> -->
                 </div>
             </section>
             <section class="results"> 
