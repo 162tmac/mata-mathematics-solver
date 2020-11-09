@@ -2,14 +2,13 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+        <link rel="icon" href="assets/images/math-icon.png">
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
         <link rel="stylesheet" href="assets/css/style.css">
-        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
         <title>MATA</title>
-        
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js"></script>
     </head>
     <body>
         <header>
@@ -87,23 +86,45 @@
             <div class="calculator-blocker" onclick="hideSidebar()"></div>
 
             <section class="solver-input">
-                <select name="methods-selector" id="methods-selector">
-                    <option value="solve">Solve</option>
-                    <option value="simplify">Simplify</option>
-                    <option value="differentiate">Differentiate</option>
-                    <option value="integrate">Integrate</option>
-                </select>
                 <form id="solver-form">
                     <input type="text" id="solver-form-input">
-                    <input type="submit" value="Submit" id="solver-form-submit">
                 </form>
+                <div class="input-buttons">
+                    <select name="methods-selector" id="methods-selector">
+                        <option value="default">Select problem...</option>
+                        <optgroup label="Numbers">
+                            <option value="calculate">Calculate</option>
+                        </optgroup>
+                        <optgroup label="Algebra">
+                            <option value="solve">Solve</option>
+                            <option value="simplify">Simplify</option>
+                            <option value="factorise">Factorise</option>
+                            <option value="expand">Expand</option>
+                            <option value="gcd">Greatest Common Divisor</option>
+                            <option value="complete-square">Complete the Square</option>
+                            <option value="simultaneous-equations">Simultaneous Equations</option>
+                            <option value="sequence-equation">Find Equation of Sequence</option>
+                        </optgroup>
+                        <optgroup label="Calculus">
+                            <option value="devirative">Devirative</option>
+                            <option value="second-devirative">Second Devirative</option>
+                            <option value="integral">Integral</option>
+                            <option value="definite-integral">Definite Integral</option>
+                            <option value="local-max">Local Maximum</option>
+                            <option value="local-min">Local Minimum</option>
+                            <option value="limit">Limit</option>
+                        </optgroup>
+                    </select>
+                    <button type="submit" form="solver-form" id="solver-form-submit">Submit</button>
+                </div>  
+                
             </section>
 
             <section class="solver-buttons">
-                <div id="math-buttons">
+                <div id="keyboard-buttons">
                     <!-- Row 1 -->
-                    <button id="log">\[\large\log\]</button>
-                    <button id="log-base">\[\large\log_&#9744;\]</button>
+                    <button id="log">\[\log\]</button>
+                    <button id="log-base">\[\log_&#9744;\]</button>
                     <button id="natural-log">ln</button>
                     <button id="open-bracket">(</button>
                     <button id="close-bracket">)</button>
@@ -122,19 +143,19 @@
                     <button id="key--6">6</button>
                     <button id="key--minus">-</button>
                     <!-- Row 3 -->
-                    <button id="integral-limits">\[\tiny\int_&#9744;^&#9744;\]</button>
-                    <button id="integral">\[\tiny\int\]</button>
-                    <button id="differentiate">\[\tiny\frac{d&#9744;}{dx}\]</button>
-                    <button id="root">\[\tiny\sqrt[&#9744;]{&#9744;}\]</button>
-                    <button id="sqaure-root">\[\tiny\sqrt{&#9744;}\]</button>
+                    <button id="integral-limits">\[\int_&#9744;^&#9744;\]</button>
+                    <button id="integral">\[\int\]</button>
+                    <button id="differentiate">\[\frac{d&#9744;}{dx}\]</button>
+                    <button id="root">\[\sqrt[&#9744;]{&#9744;}\]</button>
+                    <button id="sqaure-root">\[\sqrt{&#9744;}\]</button>
                     <button id="key--1">1</button>
                     <button id="key--2">2</button>
                     <button id="key--3">3</button>
                     <button id="key--multiply">&times;</button>
                     <!-- Row 4 -->
-                    <button id="limit-infinity">\[\tiny \lim_{x\to\infty} \]</button>
-                    <button id="limit-positive">\[\tiny \lim_{x\to0+} \]</button>
-                    <button id="limit-negative">\[\tiny \lim_{x\to0-} \]</button>
+                    <button id="limit-infinity">\[ \lim_{x\to\infty} \]</button>
+                    <button id="limit-positive">\[ \lim_{x\to0+} \]</button>
+                    <button id="limit-negative">\[ \lim_{x\to0-} \]</button>
                     <button id="less-than">&lt;</button>
                     <button id="greater-than">&gt;</button>
                     <button id="key--0">0</button>
@@ -201,7 +222,8 @@
                     <button>=</button> -->
                 </div>
             </section>
-            <section class="results"> 
+            <section class="results">
+                <h1 id="results-heading">Results</h1> 
                 <div class="results-container">
                     <div class="reveal-buttons">
                         
@@ -214,6 +236,7 @@
         </main>
 
         <script src="assets/js/main.js"></script>
+        <script src="assets/js/keyboard.js"></script>
         <script src="assets/js/calculator.js"></script>
     </body>
 </html>

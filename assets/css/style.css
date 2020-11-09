@@ -13,6 +13,7 @@ main {
 }
 
 input:hover, input:active, input:focus,
+select:hover, select:active, select:focus,
 button:hover, button:active, button:focus {
   outline: none;
 }
@@ -118,6 +119,13 @@ button:hover, button:active, button:focus {
     color: #3D7AB8;
 }
 
+.side-calculator.sm-open {
+    height: 20rem;
+    filter: grayscale(0%) opacity(1);
+    background: #343233;
+    color: #3D7AB8;
+}
+
 #calculator-reveal-button {
     font-family: 'Turret Road';
     background-color: #1F1E1F;
@@ -138,6 +146,13 @@ button:hover, button:active, button:focus {
 
 .side-calculator.open .fa-calculator, 
 .side-calculator.open #calculator-reveal-button {
+    filter: grayscale(0%) opacity(1);
+    background: #343233;
+    color: #3D7AB8;
+}
+
+.side-calculator.sm-open .fa-calculator, 
+.side-calculator.sm-open #calculator-reveal-button {
     filter: grayscale(0%) opacity(1);
     background: #343233;
     color: #3D7AB8;
@@ -165,6 +180,13 @@ button:hover, button:active, button:focus {
 
 .calculator-container.open {
     display: block; 
+}
+
+.calculator-container.sm-open {
+    display: block;
+    margin: 0 auto;
+    height: 100%;
+    width: 70%;
 }
 
 .calculator {
@@ -245,52 +267,105 @@ button:hover, button:active, button:focus {
 /* ~~~~~~ Solver Input ~~~~~~ */
 
 .solver-input {
-    padding: 1rem;
-    height: 15vh;
+    padding: 1rem 1rem 0;
+    min-height: 20vh;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-#methods-selector {
-    margin-right: 1rem;
 }
 
 #solver-form {
-    
+    width: 70%;
+    margin: 0 auto;
+    text-align: center;
 }
 
-/* ~~~~~~ Solver Buttons ~~~~~~ */
+#solver-form-input {
+    width: 80%;
+    margin: 0 auto;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    border: 1px solid rgb(184, 169, 169);
+    border-radius: 2em;
+}
 
-.solver-buttons {
-    width: 100%;
-    height: 80vh;
-    text-align: center;
-    bottom:0; 
-    background-color: #3D7AB8;
+#solver-form-input:focus {
+    border-color: #3D7AB8;
+    box-shadow: 0 0 5px 0 #3D7AB8;
+}
+
+.input-buttons {
+    margin-top: 1rem;
+    width: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#math-buttons {
+#methods-selector {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 300;
+    margin-right: 5px;
+    font-size: 1rem;
+    padding: 0.5rem 0.75rem;
+    color: #fafafa;
+    background-color: #1F1E1F;
+    border-radius: 0.5rem;
+}
+
+#solver-form-submit {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 300;
+    padding: 0.25rem 0.5rem;
+    color: #fafafa;
     background-color: #343233;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 0.5rem;
+}
+
+#solver-form-submit:hover {
+    color: #fafafa;
+    background-color: #1F1E1F;
+    border-color: #3D7AB8;
+    box-shadow: 0 0 5px 0 #3D7AB8; 
+}
+
+/* ~~~~~~ Solver Keyboard ~~~~~~ */
+
+.solver-buttons {
+    width: 100%;
+    min-height: 80vh;
+    text-align: center;
+    bottom:0; 
+    background-color: rgba(61, 122, 184, 0.7);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#keyboard-buttons {
+    background-color: #fafafa;
     display: grid;
     grid-template-columns: repeat(9, 1fr);
     gap: 0.5rem;
     justify-content: space-evenly;
-    width: 80%;
-    height: 80%;
+    width: 90%;
+    height: 90%;
     padding: 1rem;
     font-size: 2rem;
 }
 
-#math-buttons > button {
-    background-color: #fafafa;
-    border-color: #fafafa;
+#keyboard-buttons > button {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 200;
+    color: #fafafa;
+    background-color: #343233;
     font-size: 1em;
-    height: 4rem;
+    height: 3rem;
     min-width: 0;
     min-height: 0;
     overflow: hidden;
@@ -298,25 +373,61 @@ button:hover, button:active, button:focus {
 
 /* ~~~~~~ Results ~~~~~~ */
 
+.results {
+    display: none;
+}
+
+#results-heading {
+    font-family: "Turret Road", "Josefin Sans", sans-serif;
+    font-size: 3rem;
+    font-weight: 600;
+    margin: 2rem 0 0 6rem;
+    text-decoration: underline;
+}
+
 .results-container {
     display: flex;
-    padding: 3rem;
+    padding: 1rem 3rem 0 3rem;
+    margin: 0 0 5rem;
 }
 
 .reveal-buttons {
     order:1;
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.reveal-buttons > button {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 300;
+    padding: 0.25rem 0.5rem;
+    color: #fafafa;
+    background-color: #343233;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 0.5rem;
+}
+
+.reveal-buttons > button:hover {
+    color: #fafafa;
+    background-color: #1F1E1F;
+    border-color: #3D7AB8;
+    box-shadow: 0 0 5px 0 #3D7AB8; 
 }
 
 .solver-results {
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     order: 4;
+    margin-left: 10%;
+    margin-right: auto;
+    overflow: auto;
 }
 
 .step {
-    background-color: #fafafa;
+    background-color: #white;
     visibility: hidden;
 }
 
@@ -325,13 +436,13 @@ button:hover, button:active, button:focus {
 }
 
 #answer .step-equation {
-    background-color: lightblue;
+    background-color: none;
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Media Queries */
 
 /* Small screens */
-@media only screen and (max-width: 850px) {
+@media only screen and (max-width: 720px) {
     
     .navbar {
         top: 0;
@@ -390,13 +501,9 @@ button:hover, button:active, button:focus {
         top: -50px;
         margin: 0 auto;
     }
-
-    #math-buttons {
-        grid-template-columns: repeat(5, 1fr);
-    }
 }
 
-@media only screen and (min-width: 850px) {
+@media only screen and (min-width: 720px) {
   .nav-link:hover {
         filter: grayscale(0%) opacity(1);
         background: #343233;

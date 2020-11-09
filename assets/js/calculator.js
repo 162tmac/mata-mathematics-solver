@@ -3,20 +3,32 @@ let calculatorContainer = document.querySelector('.calculator-container');
 let blocker = document.querySelector('.calculator-blocker');
 
 function showSidebar() {
-    calculatorContainer .classList.add('open');
-
-    sidebar.classList.add('open');
     sidebar.classList.remove('closed');
-    
+
+    let mediaQuery = window.matchMedia("screen and (min-width: 720px)");
+    if (mediaQuery.matches) {
+        sidebar.classList.add('open');
+        calculatorContainer.classList.add('open');
+    } else {
+        sidebar.classList.add('sm-open');
+        calculatorContainer.classList.add('sm-open');
+    }
+
     blocker.style.display = "block";
 }
 
 function hideSidebar() {
-    calculatorContainer .classList.remove('open');
-
-    sidebar.classList.remove('open');
     sidebar.classList.add('closed');
 
+    let mediaQuery = window.matchMedia("screen and (min-width: 720px)");
+    if (mediaQuery.matches) {
+        sidebar.classList.remove('open');
+        calculatorContainer.classList.remove('open');
+    } else {
+        sidebar.classList.remove('sm-open');
+        calculatorContainer.classList.remove('sm-open');
+    }
+    
     blocker.style.display = "none";
 }
 

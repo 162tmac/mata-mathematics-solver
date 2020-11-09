@@ -1,8 +1,10 @@
 document.querySelector('#solver-form').addEventListener("submit", e => {
     e.preventDefault();
 
+    document.querySelector('.results').style.display = "block";
     document.querySelector('.reveal-buttons').innerHTML = "";
     document.querySelector('.solver-results').innerHTML = "";
+
 
     let baseURL = "https://api.wolframalpha.com/v2/query";
     let appID = "HGP984-WK53RHXL47";
@@ -31,7 +33,7 @@ document.querySelector('#solver-form').addEventListener("submit", e => {
     let solution = [];
 
     pods.forEach(pod => {
-        if (['Result', 'Results', 'Solution', 'Solutions'].includes(pod.title)){
+        if (['Result', 'Results', 'Solution', 'Solutions', 'Local maximum', 'Local minimum'].includes(pod.title)){
             let subpods = pod.subpods;
             solution.push(subpods);
         }
@@ -53,6 +55,9 @@ document.querySelector('#solver-form').addEventListener("submit", e => {
         imageStepsHTML = `<br><img src=${imageStepsSource}>`
         steps = solution[0][0].plaintext;
         stepsMath = solution[0][0].mathml;
+        if (stepsMath === undefined) {
+            stepsMath = steps;
+        }
     } else if (solution[0][1].title === "Possible intermediate steps") {
         imageStepsSource = solution[0][1].img.src;
         imageStepsHTML = `<br><img src=${imageStepsSource}>`
@@ -69,14 +74,15 @@ document.querySelector('#solver-form').addEventListener("submit", e => {
 
     console.log(stepsMath);
     document.querySelector('.solver-results').innerHTML += stepsMath;
-    document.querySelector('.solver-results').innerHTML += `<p>${steps}</p>`;
-    document.querySelector('.solver-results').innerHTML += imageStepsHTML;
+    // document.querySelector('.solver-results').innerHTML += `<p>${steps}</p>`;
+    // document.querySelector('.solver-results').innerHTML += imageStepsHTML;
     MathJax.typeset();
 
     let rows = Array.from(document.querySelectorAll('mjx-math > mjx-mtable > mjx-table > mjx-itable > mjx-mtr'));
     console.log(rows);
     let i;
     let btn;
+    
     
     for (i = 0; i < rows.length - 1; i++) {
         rows[i].id = `step${i+1}`;
@@ -90,9 +96,13 @@ document.querySelector('#solver-form').addEventListener("submit", e => {
         console.log(btn);
         document.querySelector(".reveal-buttons").append(btn);
 
+        if (i != 0) {
+            btn.style.visibility = "hidden";
+        }
+
         addClickToButton(btn, `step${i+1}`);
     }
-    
+    // Make answer Div & Button
     rows[rows.length - 1].id = `answer`;
     rows[rows.length - 1].classList.add('step');
     document.querySelector(`mjx-mtr#answer mjx-mtr:nth-child(1)`).classList.add('step-text');
@@ -103,251 +113,36 @@ document.querySelector('#solver-form').addEventListener("submit", e => {
     btn.classList.add('reveal-button');
     console.log(btn);
     document.querySelector(".reveal-buttons").append(btn);
+    btn.style.visibility = "hidden";
     addClickToButton(btn, 'answer');
 
+    //Make Reveal All Button
+    btn = document.createElement("button");
+    btn.innerHTML = `Reveal All Steps`;
+    btn.id = 'reveal-all-button';
+    console.log(btn);
+    document.querySelector(".reveal-buttons").prepend(btn);
+    addClickToButton(btn, 'reveal-all');
+    
     document.querySelector('.results').scrollIntoView({behavior: "smooth"});
 });
 
 function addClickToButton(btn, id) {
     btn.addEventListener('click', ()=>{
-        document.querySelector(`#${id}`).style.visibility = "visible";
+        if (btn.id === "reveal-all-button") {
+            let steps = Array.from(document.querySelectorAll('mjx-math > mjx-mtable > mjx-table > mjx-itable > mjx-mtr'));
+            let stepButtons = Array.from(document.querySelectorAll('.reveal-buttons > button'));
+            console.log(stepButtons);
+            steps.forEach(step=>{
+                step.style.visibility = "visible";
+            })
+            stepButtons.forEach(button=>{
+                button.style.visibility = "visible";
+            })
+        } else {
+            btn.nextSibling.style.visibility = "visible";
+            document.querySelector(`#${id}`).style.visibility = "visible";
+        }
     })
 }
 
-function solverButtonClicked(button) {
-    debugger;
-    let id = button.id;
-    let input = document.querySelector('#solver-form-input');
-    let textCursor = input.selectionEnd;
-    let textBefore = input.value.slice(0, textCursor);
-    let textAfter = input.value.slice(textCursor, input.value.length);
-    console.log(input, textCursor);
-    switch (id) {
-        case "log":
-            input.value = `${textBefore}log(  )${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+5, textCursor+5);
-            break;
-        case "log-base":
-            input.value = `${textBefore}log(  ) base (  )${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+5, textCursor+5);
-            break;
-        case "natural-log":
-            input.value = `${textBefore}ln(  )${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+4, textCursor+4);
-            break;
-        case "open-bracket":
-            input.value = `${textBefore}(${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+1, textCursor+1);
-            break;
-        case "close-bracket":
-            input.value = `${textBefore})${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+1, textCursor+1);
-            break;
-        case "key--7":
-            input.value = `${textBefore}7${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+1, textCursor+1);
-            break;
-        case "key--8":
-            input.value = `${textBefore}8${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+1, textCursor+1);
-            break;
-        case "key--9":
-            input.value = `${textBefore}9${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+1, textCursor+1);
-            break;
-        case "key--plus":
-            input.value = `${textBefore}+${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+1, textCursor+1);
-            break;
-        case "sin":
-            input.value = `${textBefore}sin(  )${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+5, textCursor+5);
-            break;
-        case "cos":
-            input.value = `${textBefore}cos(  )${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+5, textCursor+5);
-            break;
-        case "tan":
-            input.value = `${textBefore}tan(  )${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+5, textCursor+5);
-            break;
-        case "indices":
-            input.value = `${textBefore}^(  )${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+3, textCursor+3);
-            break;
-        case "squared":
-            input.value = `${textBefore}^2 ${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+3, textCursor+3);
-            break;
-        case "key--4":
-            input.value = `${textBefore}4${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+1, textCursor+1);
-            break;
-        case "key--5":
-            input.value = `${textBefore}5${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+1, textCursor+1);
-            break;
-        case "key--6":
-            input.value = `${textBefore}6${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+1, textCursor+1);
-            break;
-        case "key--minus":
-            input.value = `${textBefore}-${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+1, textCursor+1);
-            break;
-        case "integral-limits":
-            input.value = `${textBefore}integrate (  ) dx from (  ) to (  )${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+12, textCursor+12);
-            break;
-        case "integral":
-            input.value = `${textBefore}integrate (  ) dx${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+12, textCursor+12);
-            break;
-        case "differentiate":
-            input.value = `${textBefore}derivative of ${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+14, textCursor+14);
-            break;
-        case "root":
-            input.value = `${textBefore}(  )th root of (  )${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+2, textCursor+2);
-            break;
-        case "sqaure-root":
-            input.value = `${textBefore}sqrt(  )${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+6, textCursor+6);
-            break;
-        case "key--1":
-            input.value = `${textBefore}1${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+1, textCursor+1);
-            break;
-        case "key--2":
-            input.value = `${textBefore}2${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+1, textCursor+1);
-            break;
-        case "key--3":
-            input.value = `${textBefore}3${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+1, textCursor+1);
-            break;
-        case "key--multiply":
-            input.value = `${textBefore}*${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+1, textCursor+1);
-            break;
-        case "limit-infinity":
-            input.value = `${textBefore}limit (  ) as n->infinity${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+8, textCursor+8);
-            break;
-        case "limit-positive":
-            input.value = `${textBefore}limit (  ) as n->0+${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+8, textCursor+8);
-            break;
-        case "limit-negative":
-            input.value = `${textBefore}limit (  ) as n->0-${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+8, textCursor+8);
-            break;
-        case "less-than":
-            input.value = `${textBefore}<${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+1, textCursor+1);
-            break;
-        case "greater-than":
-            input.value = `${textBefore}>${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+1, textCursor+1);
-            break;
-        case "key--0":
-            input.value = `${textBefore}0${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+1, textCursor+1);
-            break;
-        case "key--decimal":
-            input.value = `${textBefore}.${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+1, textCursor+1);
-            break;
-        case "key--backspace":
-            if (input.value !== "") {
-                input.value = input.value.slice(0, -1);
-                input.focus();
-                input.setSelectionRange(textCursor-1, textCursor-1);
-            }
-            break;
-        case "key--divide":
-            input.value = `${textBefore}/${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+1, textCursor+1);
-            break;
-        case "infinity":
-            input.value = `${textBefore}infinity ${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+9, textCursor+9);
-            break;
-        case "pi":
-            input.value = `${textBefore}pi ${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+3, textCursor+3);
-            break;
-        case "theta":
-            input.value = `${textBefore}theta ${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+6, textCursor+6);
-            break;
-            break;
-        case "less-than-equal":
-            input.value = `${textBefore}<=${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+2, textCursor+2);
-            break;
-        case "greater-than-equal":
-            input.value = `${textBefore}>=${textAfter}`;
-            input.focus();
-            input.setSelectionRange(textCursor+2, textCursor+2);
-            break;
-        case "key--clear":
-            input.value = "";
-            input.focus();
-            break;
-        case "key--equals":
-            document.querySelector("#solver-form-submit").click();
-            break;
-        default:
-            break;
-    }
-    return;
-}
-
-let solverButtons = document.querySelectorAll("#math-buttons > button");
-
-solverButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        solverButtonClicked(button);
-    })
-})
