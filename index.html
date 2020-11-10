@@ -48,7 +48,7 @@
             </nav>
         </header>
         
-        <section>
+        <section class="popout-calculator">
             <div class="side-calculator closed" onclick="showSidebar()">
                 <button id="calculator-reveal-button"><i class="fas fa-calculator"></i></button>
                 <div class="calculator-container">
@@ -123,103 +123,60 @@
             <section class="solver-buttons">
                 <div id="keyboard-buttons">
                     <!-- Row 1 -->
-                    <button id="log">\[\log\]</button>
-                    <button id="log-base">\[\log_&#9744;\]</button>
-                    <button id="natural-log">ln</button>
-                    <button id="open-bracket">(</button>
-                    <button id="close-bracket">)</button>
-                    <button id="key--7">7</button>
-                    <button id="key--8">8</button>
-                    <button id="key--9">9</button>
-                    <button id="key--plus">+</button>
+                    <button class="key-norm" id="log">log</button>
+                    <button class="key-norm sm-screen" id="log-base">log<sub>&#9744;</sub></button>
+                    <button class="key-norm" id="natural-log">ln</button>
+                    <button class="key-norm" id="open-bracket">(</button>
+                    <button class="key-norm" id="close-bracket">)</button>
+                    <button class="key-norm" id="key--7">7</button>
+                    <button class="key-norm" id="key--8">8</button>
+                    <button class="key-norm" id="key--9">9</button>
+                    <button class="key-norm" id="key--plus">+</button>
                     <!-- Row 2 -->
-                    <button id="sin">sin</button>
-                    <button id="cos">cos</button>
-                    <button id="tan">tan</button>
-                    <button id="indices">( )<sup>&#9744;</sup></button>
-                    <button id="squared">( )&sup2;</button>
-                    <button id="key--4">4</button>
-                    <button id="key--5">5</button>
-                    <button id="key--6">6</button>
-                    <button id="key--minus">-</button>
+                    <button class="key-norm" id="sin">sin</button>
+                    <button class="key-norm" id="cos">cos</button>
+                    <button class="key-norm" id="tan">tan</button>
+                    <button class="key-norm sm-screen" id="indices">( )<sup>&#9744;</sup></button>
+                    <button class="key-norm sm-screen" id="squared">( )&sup2;</button>
+                    <button class="key-norm" id="key--4">4</button>
+                    <button class="key-norm" id="key--5">5</button>
+                    <button class="key-norm" id="key--6">6</button>
+                    <button class="key-norm" id="key--minus">-</button>
                     <!-- Row 3 -->
-                    <button id="integral-limits">\[\int_&#9744;^&#9744;\]</button>
-                    <button id="integral">\[\int\]</button>
-                    <button id="differentiate">\[\frac{d&#9744;}{dx}\]</button>
-                    <button id="root">\[\sqrt[&#9744;]{&#9744;}\]</button>
-                    <button id="sqaure-root">\[\sqrt{&#9744;}\]</button>
-                    <button id="key--1">1</button>
-                    <button id="key--2">2</button>
-                    <button id="key--3">3</button>
-                    <button id="key--multiply">&times;</button>
+                    <button class="key-lg-mathjax sm-screen" id="integral-limits">\[\int_&#9744;^&#9744;\]</button>
+                    <button class="key-lg-mathjax sm-screen" id="integral">\[\int\]</button>
+                    <button class="key-lg-mathjax sm-screen" id="differentiate">\[\frac{d&#9744;}{dx}\]</button>
+                    <button class="key-sm-mathjax sm-screen" id="root">\[\sqrt[&#9744;]{&#9744;}\]</button>
+                    <button class="key-sm-mathjax sm-screen" id="square-root">\[\sqrt{&#9744;}\]</button>
+                    <button class="key-norm" id="key--1">1</button>
+                    <button class="key-norm" id="key--2">2</button>
+                    <button class="key-norm" id="key--3">3</button>
+                    <button class="key-norm" id="key--multiply">&times;</button>
                     <!-- Row 4 -->
-                    <button id="limit-infinity">\[ \lim_{x\to\infty} \]</button>
-                    <button id="limit-positive">\[ \lim_{x\to0+} \]</button>
-                    <button id="limit-negative">\[ \lim_{x\to0-} \]</button>
-                    <button id="less-than">&lt;</button>
-                    <button id="greater-than">&gt;</button>
-                    <button id="key--0">0</button>
-                    <button id="key--decimal">.</button>
-                    <button id="key--backspace"><i class="fas fa-backspace"></i></button>
-                    <button id="key--divide">÷</button>
+                    <button class="key-sm-mathjax sm-screen" id="limit-infinity">\[ \lim_{x\to\infty} \]</button>
+                    <button class="key-sm-mathjax sm-screen" id="limit-positive">\[ \lim_{x\to0+} \]</button>
+                    <button class="key-sm-mathjax sm-screen" id="limit-negative">\[ \lim_{x\to0-} \]</button>
+                    <button class="key-norm" id="less-than">&lt;</button>
+                    <button class="key-norm" id="greater-than">&gt;</button>
+                    <button class="key-norm" id="key--0">0</button>
+                    <button class="key-norm" id="key--decimal">.</button>
+                    <button class="key-norm" id="key--backspace"><i class="fas fa-backspace"></i></button>
+                    <button class="key-norm" id="key--divide">÷</button>
                     <!-- Row 5 -->
-                    <button id="infinity">&infin;</button>
-                    <button id="pi">&pi;</button>
-                    <button id="theta">&theta;</button>
-                    <button id="less-than-equal">&le;</button>
-                    <button id="greater-than-equal">&ge;</button>
-                    <button id="key--clear">AC</button>
-                    <button id="key--equals">=</button>
-                    <!-- Row 1
-                    <button><img src="assets/images/log.png" alt="Log"></button>
-                    <button><img src="assets/images/log_base.png" alt="Log Base"></button>
-                    <button>ln</button>
-                    <button>(</button>
-                    <button>)</button>
-                    <button>7</button>
-                    <button>8</button>
-                    <button>9</button>
-                    <button>+</button>
-                    Row 2 
-                    <button>sin</button>
-                    <button>cos</button>
-                    <button>tan</button>
-                    <button>( )<sup>&#9744;</sup></button>
-                    <button>( )&sup2;</button>
-                    <button>4</button>
-                    <button>5</button>
-                    <button>6</button>
-                    <button>-</button>
-                    Row 3
-                    <button><img src="assets/images/integral_lims.png" alt="Integral with Limits"></button>
-                    <button><img src="assets/images/integral.png" alt="Integral"></button>
-                    <button><img src="assets/images/differential.png" alt="Differentiate"></button>
-                    <button><img src="assets/images/root.png" alt="Root"></button>
-                    <button><img src="assets/images/sqrt.png" alt="Square Root"></button>
-                    <button>1</button>
-                    <button>2</button>
-                    <button>3</button>
-                    <button>&times;</button>
-                    Row 4
-                    <button><img src="assets/images/limit_infty.png" alt="Limit to Infinity"></button>
-                    <button><img src="assets/images/limit_zero_p.png" alt="Limit to 0 Positive"></button>
-                    <button><img src="assets/images/limit_zero_n.png" alt="Limit to 0 Negative"></button>
-                    <button>&lt;</button>
-                    <button>&gt;</button>
-                    <button>0</button>
-                    <button>.</button>
-                    <button><i class="fas fa-backspace"></i></button>
-                    <button>÷</button>
-                    Row 5
-                    <button>&infin;</button>
-                    <button>&pi;</button>
-                    <button>&theta;</button>
-                    <button>&le;</button>
-                    <button>&ge;</button>
-                    <button>AC</button>
-                    <button>AC</button>
-                    <button>=</button>
-                    <button>=</button> -->
+                    <button class="key-norm sm-screen" id="infinity">&infin;</button>
+                    <button class="key-norm sm-screen" id="pi">&pi;</button>
+                    <button class="key-norm sm-screen" id="theta">&theta;</button>
+                    <button class="key-norm sm-screen" id="less-than-equal">&le;</button>
+                    <button class="key-norm sm-screen" id="greater-than-equal">&ge;</button>
+                    <button class="key-norm sm-screen" id="key--clear">AC</button>
+                    <button class="key-norm sm-screen" id="key--equals">=</button>
+
+                    <!-- For Small Screens Only-->
+                    <!-- <button class="key-norm key-sm" id="key--x">x</button>
+                    <button class="key-norm key-sm" id="key--y">y</button>
+                    <button class="key-norm key-sm" id="key--n">n</button>
+                    <button class="key-norm key-sm" id="key--e">e</button> -->
+                    
                 </div>
             </section>
             <section class="results">

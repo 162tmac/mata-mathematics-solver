@@ -1,7 +1,7 @@
 document.querySelector('#solver-form').addEventListener("submit", e => {
     e.preventDefault();
 
-    document.querySelector('.results').style.display = "block";
+    
     document.querySelector('.reveal-buttons').innerHTML = "";
     document.querySelector('.solver-results').innerHTML = "";
 
@@ -102,29 +102,34 @@ document.querySelector('#solver-form').addEventListener("submit", e => {
 
         addClickToButton(btn, `step${i+1}`);
     }
-    // Make answer Div & Button
+
+    //Make Reveal All Button
+    btn = document.createElement("button");
+    btn.innerHTML = `Reveal All Steps`;
+    btn.id = 'reveal-all-button';
+    btn.classList.add('reveal-button');
+    console.log(btn);
+    document.querySelector(".reveal-buttons").prepend(btn);
+    addClickToButton(btn, 'reveal-all');
+
+    // Make Answer Div & Button
+    console.log(rows);
     rows[rows.length - 1].id = `answer`;
     rows[rows.length - 1].classList.add('step');
     document.querySelector(`mjx-mtr#answer mjx-mtr:nth-child(1)`).classList.add('step-text');
     document.querySelector(`mjx-mtr#answer mjx-mtr:nth-child(2)`).classList.add('step-equation');
 
     btn = document.createElement("button");
-    btn.innerHTML = `Reveal Answer`;
+    btn.innerHTML = "Reveal Answer";
+    btn.id = "answer-button";
     btn.classList.add('reveal-button');
     console.log(btn);
+    addClickToButton(btn, 'answer');
     document.querySelector(".reveal-buttons").append(btn);
     btn.style.visibility = "hidden";
-    addClickToButton(btn, 'answer');
-
-    //Make Reveal All Button
-    btn = document.createElement("button");
-    btn.innerHTML = `Reveal All Steps`;
-    btn.id = 'reveal-all-button';
-    console.log(btn);
-    document.querySelector(".reveal-buttons").prepend(btn);
-    addClickToButton(btn, 'reveal-all');
     
-    document.querySelector('.results').scrollIntoView({behavior: "smooth"});
+    document.querySelector('.results').style.display = "block";
+    document.querySelector('#results-heading').scrollIntoView({behavior: "smooth"});
 });
 
 function addClickToButton(btn, id) {
@@ -139,6 +144,8 @@ function addClickToButton(btn, id) {
             stepButtons.forEach(button=>{
                 button.style.visibility = "visible";
             })
+        } else if (btn.id === "answer-button") {
+            document.querySelector("#answer").style.visibility = "visible";
         } else {
             btn.nextSibling.style.visibility = "visible";
             document.querySelector(`#${id}`).style.visibility = "visible";

@@ -105,7 +105,7 @@ button:hover, button:active, button:focus {
     float: right;
     position: fixed;
     background-color: #1F1E1F;
-    transition: width 200ms ease;
+    transition: width 200ms ease, height 300ms ease;
     z-index: 1;
     display: flex;
     flex-direction: column;
@@ -113,14 +113,14 @@ button:hover, button:active, button:focus {
 }
 
 .side-calculator.open {
-    width: 20rem;
+    width: 25vw;
     filter: grayscale(0%) opacity(1);
     background: #343233;
     color: #3D7AB8;
 }
 
 .side-calculator.sm-open {
-    height: 20rem;
+    height: 40vh;
     filter: grayscale(0%) opacity(1);
     background: #343233;
     color: #3D7AB8;
@@ -272,7 +272,7 @@ button:hover, button:active, button:focus {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 #solver-form {
@@ -285,7 +285,7 @@ button:hover, button:active, button:focus {
     width: 80%;
     margin: 0 auto;
     padding: 0.75rem 1rem;
-    font-size: 1rem;
+    font-size: 1.25rem;
     font-weight: 500;
     border: 1px solid rgb(184, 169, 169);
     border-radius: 2em;
@@ -297,7 +297,6 @@ button:hover, button:active, button:focus {
 }
 
 .input-buttons {
-    margin-top: 1rem;
     width: 80%;
     display: flex;
     justify-content: center;
@@ -336,39 +335,221 @@ button:hover, button:active, button:focus {
 
 /* ~~~~~~ Solver Keyboard ~~~~~~ */
 
+
+/* Style */
 .solver-buttons {
     width: 100%;
-    min-height: 80vh;
+    min-height: 60vh;
     text-align: center;
-    bottom:0; 
-    background-color: rgba(61, 122, 184, 0.7);
+    bottom:0;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 }
 
 #keyboard-buttons {
-    background-color: #fafafa;
+    background-color: #1F1E1F;
+    border-radius: 2em;
     display: grid;
     grid-template-columns: repeat(9, 1fr);
-    gap: 0.5rem;
+    grid-auto-rows: minmax(4rem, auto);
+    width: 80%;
+    gap: 2px;
     justify-content: space-evenly;
-    width: 90%;
-    height: 90%;
-    padding: 1rem;
-    font-size: 2rem;
+
+    padding: 1.5rem;
+    grid-template-areas: 
+    "log log-base natural-log open-bracket close-bracket key--7 key--8 key--9 key--plus"
+    "sin cos key--tan indices squared key--4 key--5 key--6 key--minus"
+    "integral-limits integral differentiate root square-root key--1 key--2 key--3 key--multiply"
+    "limit-infinity limit-positive limit-negative less-than greater-than key--0 key--decimal key--backspace key--divide"
+    "infinity pi theta less-than-equal greater-than-equal key--clear key--clear key--equals key--equals"
 }
 
-#keyboard-buttons > button {
+#keyboard-buttons > *  {
     font-family: 'Josefin Sans', sans-serif;
-    font-weight: 200;
-    color: #fafafa;
-    background-color: #343233;
-    font-size: 1em;
-    height: 3rem;
-    min-width: 0;
-    min-height: 0;
+    border: none;
+    font-size: 1.5em;
+    background-color: #dbdbdb;
+    color: #000;
     overflow: hidden;
+}
+
+#keyboard-buttons > .key-sm-mathjax  {
+    font-weight: 900;
+    font-size: 1.5em;
+}
+
+#keyboard-buttons > .key-lg-mathjax  {
+    font-weight: 900;
+    font-size: 0.84em;
+}
+
+#keyboard-buttons > .key-norm  {
+    font-weight: 500;
+    font-size: 2em;
+}
+
+#log-base > sub, #indices > sup {
+    font-size: 1.25rem;
+}
+
+/* Keyboard Grid Names */
+
+#log {
+    grid-area: log;
+}
+#log-base {
+    grid-area: log-base;
+}
+#natural-log {
+    grid-area: natural-log;
+}
+#open-bracket {
+    grid-area: open-bracket;
+}
+#close-bracket {
+    grid-area: close-bracket;
+}
+#key--7 {
+    grid-area: key--7;
+    background-color: #fafafa;
+}
+#key--8 {
+    grid-area: key--8;
+    background-color: #fafafa;
+}
+#key--9 {
+    grid-area: key--9;
+    background-color: #fafafa;
+}
+#key--plus {
+    grid-area: key--plus;
+}
+#sin {
+    grid-area: sin;
+}
+#cos {
+    grid-area: cos;
+}
+#tan {
+    grid-area: key--tan;
+}
+#indices {
+    grid-area: indices;
+}
+#squared {
+    grid-area: squared;
+}
+#key--4 {
+    grid-area: key--4;
+    background-color: #fafafa;
+}
+#key--5 {
+    grid-area: key--5;
+    background-color: #fafafa;
+}
+#key--6 {
+    grid-area: key--6;
+    background-color: #fafafa;
+}
+#key--minus {
+    grid-area: key--minus;
+}
+#integral-limits {
+    grid-area: integral-limits;
+}
+#integral {
+    grid-area: integral;
+}
+#differentiate {
+    grid-area: differentiate;
+}
+#root {
+    grid-area: root;
+}
+#square-root {
+    grid-area: square-root;
+}
+#key--1 {
+    grid-area: key--1;
+    background-color: #fafafa;
+}
+#key--2 {
+    grid-area: key--2;
+    background-color: #fafafa;
+}
+#key--3 {
+    grid-area: key--3;
+    background-color: #fafafa;
+}
+#key--multiply {
+    grid-area: key--multiply;
+}
+#limit-infinity {
+    grid-area: limit-infinity;
+}
+#limit-positive {
+    grid-area: limit-positive;
+}
+#limit-negative {
+    grid-area: limit-negative;
+}
+#less-than {
+    grid-area: less-than;
+}
+#greater-than {
+    grid-area: greater-than;
+}
+#key--0 {
+    grid-area: key--0;
+    background-color: #fafafa;
+}
+#key--decimal {
+    grid-area: key--decimal;
+    background-color: #fafafa;
+}
+#key--backspace {
+    grid-area: key--backspace;
+    background-color: #fafafa;
+}
+#key--divide {
+    grid-area: key--divide;
+}
+#infinity {
+    grid-area: infinity;
+}
+#pi {
+    grid-area: pi;
+}
+#theta {
+    grid-area: theta;
+}
+#less-than-equal {
+    grid-area: less-than-equal;
+}
+#greater-than-equal {
+    grid-area: greater-than-equal;
+}
+#key--clear {
+    grid-area: key--clear;
+    background-color: rgb(184, 121, 61);
+}
+#key--equals {
+    grid-area: key--equals;
+    background-color: #3D7AB8
+}
+#key--x {
+    grid-area: key--x;
+}
+#key--y {
+    grid-area: key--y;
+}
+#key--n {
+    grid-area: key--n;
+}
+#key--e {
+    grid-area: key--e;
 }
 
 /* ~~~~~~ Results ~~~~~~ */
@@ -419,31 +600,74 @@ button:hover, button:active, button:focus {
 
 .solver-results {
     text-align: center;
+    background-color: white;
+    border-radius: 2rem;
     font-size: 1.3rem;
     order: 4;
-    margin-left: 10%;
-    margin-right: auto;
+    margin: 0 auto;
     overflow: auto;
 }
 
 .step {
-    background-color: #white;
+    background-color: #1F1E1F;
     visibility: hidden;
 }
 
 .step-text {
-    color: grey;
+    color: #aaaaaa;
 }
 
-#answer .step-equation {
-    background-color: none;
+.step-equation {
+    color: #fff;
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Media Queries */
 
-/* Small screens */
-@media only screen and (max-width: 720px) {
-    
+/* Large Screens */
+
+@media only screen and (min-width: 900px) {
+  .nav-link:hover {
+        filter: grayscale(0%) opacity(1);
+        background: #343233;
+        color: #3D7AB8;
+    }  
+
+    .navbar:hover {
+        width: 16rem;
+    }
+
+    .navbar:hover .link-text {
+        display: block;
+    }
+
+    .navbar:hover .logo {
+        flex-direction: row;
+    }
+
+    .navbar:hover .logo-text {
+        padding: 0;
+    }
+
+    .side-calculator.closed:hover {
+        cursor: pointer;
+        width: 5rem;
+        background-color: #343233;
+        filter: grayscale(0%) opacity(1);
+        background: #343233;
+        color: #3D7AB8;
+    }
+
+    #calculator-reveal-button.closed:hover, .side-calculator.closed:hover #calculator-reveal-button,
+    .side-calculator.closed:hover .fa-calculator {
+        cursor: pointer;
+        filter: grayscale(0%) opacity(1);
+        background: #343233;
+        color: #3D7AB8;
+    }
+}
+
+/* Medium screens */
+@media only screen and (max-width: 900px) {
     .navbar {
         top: 0;
         width: 100vw;
@@ -482,10 +706,6 @@ button:hover, button:active, button:focus {
         justify-content: center;
     }
 
-    main {
-        margin: 5rem 0 0;
-    }
-
     .side-calculator {
         bottom: 0;
         width: 100%;
@@ -501,45 +721,127 @@ button:hover, button:active, button:focus {
         top: -50px;
         margin: 0 auto;
     }
+    
+    main {
+        margin: 5rem 0 0 0;
+    }
+
+    .solver-input {
+        margin-top: 5rem;
+        padding: 0;
+        background-color: #fff;
+    }
+
+    #solver-form {
+        width: 100%
+    }
+
+    .solver-buttons {
+        align-items: flex-start;
+    }
+
+    #keyboard-buttons > button:not(.sm-screen) {
+        display: none;
+    }
+
+    #keyboard-buttons {
+        top: 0;
+        padding: 1rem; 
+        width: 95%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: minmax(4rem, auto);
+        grid-template-areas: 
+        "infinity pi theta log-base"
+        "indices squared less-than-equal greater-than-equal"
+        "root integral-limits integral differentiate"
+        "square-root limit-infinity limit-positive limit-negative"
+        "key--clear key--clear key--equals key--equals"
+    }
 }
 
-@media only screen and (min-width: 720px) {
-  .nav-link:hover {
-        filter: grayscale(0%) opacity(1);
-        background: #343233;
-        color: #3D7AB8;
-    }  
+/* Small screens */
+@media only screen and (max-width: 550px) {
 
-    .navbar:hover {
-        width: 16rem;
+    .solver-input {
+        justify-content: flex-end;
     }
 
-    .navbar:hover .link-text {
-        display: block;
+    #solver-form {
+        position: fixed;
+        top: 6rem;
+        z-index: 1;
     }
 
-    .navbar:hover .logo {
+    #methods-selector {
+        width: 65%;
+    }
+
+    .solver-buttons {
+        align-items: flex-start;
+    }
+
+    #keyboard-buttons > button:not(.sm-screen) {
+        display: none;
+    }
+
+    #keyboard-buttons {
+        background-color: #fff;
+        display: grid;
+        gap: 0;
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: minmax(4rem, auto);
+        grid-template-areas: 
+        "infinity pi theta log-base"
+        "indices squared less-than-equal greater-than-equal"
+        "root integral-limits integral differentiate"
+        "square-root limit-infinity limit-positive limit-negative"
+        "key--clear key--clear key--equals key--equals"
+    }
+
+    .results {
+        width: 100%;
+        text-align: center;
+    }
+
+    .results-container {
+        flex-direction: column;
+        padding: 0.25rem;
+        width: 100%;
+    }
+
+    #results-heading {
+        margin: 0;
+    }
+
+    .reveal-buttons {
         flex-direction: row;
+        flex-wrap: wrap;
+        width: 100vw;
     }
 
-    .navbar:hover .logo-text {
-        padding: 0;
+    .reveal-button {
+        margin-bottom: 1rem;
     }
 
-    .side-calculator.closed:hover {
-        cursor: pointer;
-        width: 5rem;
-        background-color: #343233;
-        filter: grayscale(0%) opacity(1);
-        background: #343233;
-        color: #3D7AB8;
+    .solver-results {
+        max-width: 100%;
+        margin: 0;
     }
 
-    #calculator-reveal-button.closed:hover, .side-calculator.closed:hover #calculator-reveal-button,
-    .side-calculator.closed:hover .fa-calculator {
-        cursor: pointer;
-        filter: grayscale(0%) opacity(1);
-        background: #343233;
-        color: #3D7AB8;
+    .step-text {
+        word-wrap: break-word; 
+    }
+}
+
+@media only screen and (max-width: 900px) and (orientation:landscape) {
+    .solver-input {
+        min-height: 30vh;
+    }
+
+    #calculator-reveal-button {
+        left: 0;
+        top: -50px;
+        margin: 0 auto;
     }
 }

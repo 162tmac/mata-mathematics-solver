@@ -5,7 +5,7 @@ let blocker = document.querySelector('.calculator-blocker');
 function showSidebar() {
     sidebar.classList.remove('closed');
 
-    let mediaQuery = window.matchMedia("screen and (min-width: 720px)");
+    let mediaQuery = window.matchMedia("screen and (min-width: 900px)");
     if (mediaQuery.matches) {
         sidebar.classList.add('open');
         calculatorContainer.classList.add('open');
@@ -20,7 +20,7 @@ function showSidebar() {
 function hideSidebar() {
     sidebar.classList.add('closed');
 
-    let mediaQuery = window.matchMedia("screen and (min-width: 720px)");
+    let mediaQuery = window.matchMedia("screen and (min-width: 900px)");
     if (mediaQuery.matches) {
         sidebar.classList.remove('open');
         calculatorContainer.classList.remove('open');
