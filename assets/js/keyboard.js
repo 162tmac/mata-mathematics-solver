@@ -73,9 +73,9 @@ function dropdownChanged(value) {
             break;
         default:
             break;
+    // Set the cursor to the input
     input.focus();
     input.setSelectionRange(textCursor, textCursor);
-    
     return
     }
 }

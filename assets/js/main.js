@@ -1,15 +1,14 @@
 document.querySelector('#solver-form').addEventListener("submit", e => {
     e.preventDefault();
 
-    
+    // Clears any previous results on page
     document.querySelector('.reveal-buttons').innerHTML = "";
     document.querySelector('.solver-results').innerHTML = "";
 
-
+    // Method for sending request to Wolfram API
     let baseURL = "https://api.wolframalpha.com/v2/query";
     let appID = "HGP984-WK53RHXL47";
     let query = document.querySelector('#solver-form-input').value;
-    debugger;
     console.log(query);
     let queryURL = encodeURIComponent(query);
     console.log(queryURL);
@@ -19,70 +18,65 @@ document.querySelector('#solver-form').addEventListener("submit", e => {
     let xhr = new XMLHttpRequest();
     xhr.open('GET', fullURL, false);
     xhr.send(null);
-
-    // xhr.onload = function () {
-    //     if (xhr.readyState === xhr.DONE && xhr.status === 200) {
-    //         console.log(xhr.response, xhr.responseXML);
-    //     }
-    // };
     
+
     data = JSON.parse(xhr.responseText);
     console.log(data);
     let pods = data.queryresult.pods;
     console.log(pods);
+
+    // Will hold the step by step solution of the query. If there is no step byt step solution, 
+    // a different pod from the API will be saved in here
     let solution = [];
 
+    // Searches for a pod of the response that would contain a step by step solution
     pods.forEach(pod => {
         if (['Result', 'Results', 'Solution', 'Solutions', 'Local maximum', 'Local minimum'].includes(pod.title)){
             let subpods = pod.subpods;
             solution.push(subpods);
-        }
-        
+        }      
     })
     console.log(solution);
+
+    // If there's no step by step solution just push the first pod
     if (solution.length == 0) {
        solution.push(pods[0].subpods);
     }
     console.log(solution);
 
-    let imageStepsSource;
-    let imageStepsHTML;
     let steps;
-    let stepsMath;
 
     if (solution[0].length === 1) {
-        imageStepsSource = solution[0][0].img.src;
-        imageStepsHTML = `<br><img src=${imageStepsSource}>`
-        steps = solution[0][0].plaintext;
-        stepsMath = solution[0][0].mathml;
-        if (stepsMath === undefined) {
-            stepsMath = steps;
+        steps = solution[0][0].mathml;
+        if (steps === undefined) {
+            steps = solution[0][0].plaintext;;
         }
     } else if (solution[0][1].title === "Possible intermediate steps") {
-        imageStepsSource = solution[0][1].img.src;
-        imageStepsHTML = `<br><img src=${imageStepsSource}>`
-        steps = solution[0][1].plaintext;
-        stepsMath = solution[0][1].mathml;
+        steps = solution[0][1].mathml;
     }
     
     console.log(steps);
-    steps = steps.replaceAll(/\n/g, '<br>');
-    steps = steps.replaceAll('integral', '&int;');
-    stepsMath = stepsMath.replaceAll(' </mtext>', '&nbsp</mtext>');
-    stepsMath = stepsMath.replaceAll('</mn>', '&nbsp</mn>');
-    stepsMath = stepsMath.replaceAll('<mi>integral</mi>', '<mi>&int;</mi>');
 
-    console.log(stepsMath);
-    document.querySelector('.solver-results').innerHTML += stepsMath;
-    // document.querySelector('.solver-results').innerHTML += `<p>${steps}</p>`;
-    // document.querySelector('.solver-results').innerHTML += imageStepsHTML;
+    // Fixes some formatting bugs that were happening when getting the solution in MathML format
+    steps = steps.replaceAll(' </mtext>', '&nbsp</mtext>');
+    steps = steps.replaceAll('</mn>', '&nbsp</mn>');
+    steps = steps.replaceAll('<mi>integral</mi>', '<mi>&int;</mi>');
+    console.log(steps);
+
+    // Inserts the MathML solution into the html page
+    document.querySelector('.solver-results').innerHTML += steps;
+
+    // Reloads Mathjax to read the MathMl inserted into the HTML
     MathJax.typeset();
+
+    // Now will create buttons from the MathJax elements loaded to the page and 
+    // add funtionality to reveal a step of the solution
+
 
     let rows = Array.from(document.querySelectorAll('mjx-math > mjx-mtable > mjx-table > mjx-itable > mjx-mtr'));
     console.log(rows);
     let i;
     let btn;
-    
     
     for (i = 0; i < rows.length - 1; i++) {
         rows[i].id = `step${i+1}`;
@@ -128,6 +122,7 @@ document.querySelector('#solver-form').addEventListener("submit", e => {
     document.querySelector(".reveal-buttons").append(btn);
     btn.style.visibility = "hidden";
     
+    // Display the results and scroll the page down to the div
     document.querySelector('.results').style.display = "block";
     document.querySelector('#results-heading').scrollIntoView({behavior: "smooth"});
 });

@@ -1,5 +1,6 @@
 let sidebar = document.querySelector('.side-calculator');
 let calculatorContainer = document.querySelector('.calculator-container');
+// Blocker used to close the sidebar when it's clicked. Will grey the rest of the page
 let blocker = document.querySelector('.calculator-blocker');
 
 function showSidebar() {
@@ -44,8 +45,10 @@ console.log(operatorButtons, numberButtons, backspaceButton, clearButton, equals
 
 // Functions for calculator
 
+// Takes a number, converts it to a string and 
 function numberToDisplay(number) {
     number = number.toString();
+    // For inputting negative number
     if (number === "-") {
         return number;
     }
@@ -64,6 +67,7 @@ function numberToDisplay(number) {
     }
 }
 
+// Converts string from display to number
 function displayToNumber(displayNumber) {
     console.log(displayNumber);
     let number = displayNumber.replaceAll(',', "");
@@ -125,9 +129,7 @@ operatorButtons.forEach(operator => {
     operator.addEventListener('click', () => {
         if (operator.innerHTML === "-" && currentDisplay.innerHTML === "&nbsp;") {
             addNumToDisplay("-")
-        } else if (currentDisplay.innerHTML === "NaN") {
-            currentDisplay.innerHTML = "&nbsp;";
-        } else if (currentDisplay.innerHTML === "&nbsp;") {
+        } else if (currentDisplay.innerHTML === "NaN" || currentDisplay.innerHTML === "&nbsp;") {
             currentDisplay.innerHTML = "&nbsp;";
         } else if (["+", "-", "×", "÷"].includes(previousDisplay.innerHTML.slice(-1))) {
             let result = compute(previousDisplay.innerHTML.slice(0, -2), currentDisplay.innerHTML, previousDisplay.innerHTML.slice(-1));
