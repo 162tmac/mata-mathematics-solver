@@ -70,8 +70,6 @@ document.querySelector('#solver-form').addEventListener("submit", e => {
 
     // Now will create buttons from the MathJax elements loaded to the page and 
     // add funtionality to reveal a step of the solution
-
-
     let rows = Array.from(document.querySelectorAll('mjx-math > mjx-mtable > mjx-table > mjx-itable > mjx-mtr'));
     console.log(rows);
     let i;
@@ -121,9 +119,26 @@ document.querySelector('#solver-form').addEventListener("submit", e => {
     document.querySelector(".reveal-buttons").append(btn);
     btn.style.visibility = "hidden";
     
+    
+    
     // Display the results and scroll the page down to the div
-    document.querySelector('.results').style.display = "block";
-    document.querySelector('#results-heading').scrollIntoView({behavior: "smooth"});
+    document.querySelector('section.results').style.display = "block";
+    const navbarBottomY = document.querySelector('nav.navbar').getBoundingClientRect().bottom;
+    const bottomKeyboardY = document.querySelector('section.solver-buttons').getBoundingClientRect().bottom;
+    
+    if (bottomKeyboardY <= navbarBottomY) {
+        window.scroll({
+            top: bottomKeyboardY,
+            behavior: 'smooth'
+        });
+    } else {
+        window.scroll({
+            top: bottomKeyboardY - navbarBottomY,
+            behavior: 'smooth'
+        });
+    }
+    
+    
 });
 
 function addClickToButton(btn, id) {

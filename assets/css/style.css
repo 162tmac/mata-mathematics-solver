@@ -349,12 +349,12 @@ button:hover, button:active, button:focus {
 }
 
 #keyboard-buttons {
-    background-color: #1F1E1F;
+    background-color: #141414;
     border-radius: 2em;
     display: grid;
     grid-template-columns: repeat(9, 1fr);
     grid-auto-rows: minmax(4rem, auto);
-    width: 80%;
+    width: 85%;
     gap: 2px;
     justify-content: space-evenly;
 
@@ -557,9 +557,21 @@ button:hover, button:active, button:focus {
 
 .results {
     display: none;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.results-box {
+    display: flex;
+    flex-direction: column;
+    background-color: #141414;
+    border-radius: 2em;
+    padding: 0.5em;
+    margin: 1rem auto;
 }
 
 #results-heading {
+    color: #fff;
     font-family: "Turret Road", "Josefin Sans", sans-serif;
     font-size: 3rem;
     font-weight: 600;
@@ -569,7 +581,7 @@ button:hover, button:active, button:focus {
 
 .results-container {
     display: flex;
-    padding: 1rem 3rem 0 3rem;
+    padding: 1rem 3rem 1rem 3rem;
     margin: 0 0 5rem;
 }
 
@@ -604,23 +616,22 @@ button:hover, button:active, button:focus {
     text-align: center;
     background-color: white;
     border-radius: 2rem;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     order: 4;
     margin: 0 auto;
     overflow: auto;
 }
 
 .step {
-    background-color: #1F1E1F;
     visibility: hidden;
 }
 
 .step-text {
-    color: #aaaaaa;
+    color: #555555;
 }
 
 .step-equation {
-    color: #fff;
+    color: #141414;
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Media Queries */
@@ -749,7 +760,7 @@ button:hover, button:active, button:focus {
     #keyboard-buttons {
         top: 0;
         padding: 1rem; 
-        width: 95%;
+        width: 100%;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-auto-rows: minmax(4rem, auto);
@@ -760,17 +771,20 @@ button:hover, button:active, button:focus {
         "square-root limit-infinity limit-positive limit-negative"
         "key--clear key--clear key--equals key--equals"
     }
+
+    .results {
+        width: 100%;
+    }
 }
 
 /* Small screens */
 @media only screen and (max-width: 550px) {
 
     .solver-input {
-        justify-content: flex-end;
+        min-height: 20vh;
     }
 
     #solver-form {
-        position: fixed;
         top: 6rem;
         z-index: 1;
     }
