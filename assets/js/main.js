@@ -6,7 +6,7 @@ document.querySelector('#solver-form').addEventListener("submit", e => {
     document.querySelector('.solver-results').innerHTML = "";
 
     // Method for sending request to Wolfram API
-    let baseURL = "https://api.wolframalpha.com/v2/query";
+    let baseURL = "https://cors-anywhere.herokuapp.com/https://api.wolframalpha.com/v2/query";
     let appID = "HGP984-WK53RHXL47";
     let query = document.querySelector('#solver-form-input').value;
     console.log(query);
@@ -18,7 +18,6 @@ document.querySelector('#solver-form').addEventListener("submit", e => {
     let xhr = new XMLHttpRequest();
     xhr.open('GET', fullURL, false);
     xhr.send(null);
-    
 
     data = JSON.parse(xhr.responseText);
     console.log(data);

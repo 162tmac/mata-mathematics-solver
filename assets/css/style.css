@@ -578,6 +578,7 @@ button:hover, button:active, button:focus {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    margin-right: 1%;
 }
 
 .reveal-buttons > button {
