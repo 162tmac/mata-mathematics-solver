@@ -56,7 +56,7 @@ function numberToDisplay(number) {
     let decimalNums = number.split('.')[1];
     let formatted;
     if (isNaN(wholeNums)) {
-        formatted = "&nbsp;";
+        formatted = "0";
     } else {
         formatted = wholeNums.toLocaleString('en', { maximumFractionDigits: 0 })
     }
