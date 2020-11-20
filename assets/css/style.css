@@ -575,7 +575,7 @@ button:hover, button:active, button:focus {
     font-family: "Turret Road", "Josefin Sans", sans-serif;
     font-size: 3rem;
     font-weight: 600;
-    margin: 2rem 0 0 6rem;
+    margin: 2rem 0 0 3rem;
     text-decoration: underline;
 }
 
@@ -618,8 +618,13 @@ button:hover, button:active, button:focus {
     border-radius: 2rem;
     font-size: 1.2rem;
     order: 4;
-    margin: 0 auto;
-    overflow: auto;
+    margin: auto auto;
+    padding: 1rem;
+    max-width: 92%;
+}
+
+.results-inner {
+    overflow-x: auto;
 }
 
 .step {
@@ -632,6 +637,12 @@ button:hover, button:active, button:focus {
 
 .step-equation {
     color: #141414;
+}
+
+#error-message {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 2rem;
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Media Queries */
@@ -786,7 +797,6 @@ button:hover, button:active, button:focus {
 
     #solver-form {
         top: 6rem;
-        z-index: 1;
     }
 
     #methods-selector {
@@ -833,7 +843,7 @@ button:hover, button:active, button:focus {
     .reveal-buttons {
         flex-direction: row;
         flex-wrap: wrap;
-        width: 100vw;
+        width: 100%;
     }
 
     .reveal-button {

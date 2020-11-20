@@ -1,0 +1,135 @@
+Elementary Math
+125 + 375
+1.05 * 12,000
+7^3
+sqrt 1801
+1/6 + 5/12 + 3/4
+3/8 * 2/7 ############## Scroll Problem
+1/4 * (4 - 1/2)
+place values of 6135
+value of the digit 3 in 23904
+convert 1/6 to percent
+30% of 8 miles
+15% off of $29.95
+1 + (even number * odd number)
+negative number ^ 40
+negative integer / positive integer
+rational number + positive even
+############# Rachel has 17 apples. She gives 9 to Sarah. How many apples does Rachel have now? 
+############# Rhonda has 12 marbles more than Douglas. Douglas has 6 marbles more than Bertha. Rhonda has twice as many marbles as Bertha has. How many marbles does Douglas have?
+
+
+Algebra
+evaluate x^2 + 2(x + 7) - 19 at x = 7
+(x - 1)(x + 3)^2 + 7 where x = 2
+x + y = 1, x - y = 3
+solve 3x - y - z = 2, x + 2y - 3z = -12, 2x + y + 3z = 9
+############ x intercepts of sin(x)
+############ y intercept of x^2+1
+############ intercepts of (x^2+2)(x^2-1)
+solution to 2x - 3 = 1
+x^2 + 5x + 6 = 0
+solve (9^(x + 1)) - (28 (3^(x))) + 3 = 0 over the real numbers
+solve sin(t) + cos(t) = 1
+############# rational solutions of x^3 - 3x + 2 'Candidate roots from rational root theorem' but also cycle through each pod in solution
+simplify (1/a + 1/b) (a + b)
+############# k/(k + 1) + 1/((k + 1) (k + 2)) meh user just needs to be more specific
+partial fraction decomposition 1/(x^2 + 4x + 3)
+############# 1/(x^3 + 4x^2 + 5x + 2) meh user just needs to be more specific
+factor x^3 - 8
+factorization of x^4+4
+factor x^3+2x^2+x+2
+expanded form of (x + 3)^2
+multiply out (x^2 + x)^4
+complete the square x^2 + 2x + 3
+complete the square x^2 + y^2 + 2x + 4y - 11 = 0
+
+
+Geometry
+area of a circle with radius 2
+perimeter of square with side 3 cm
+hexagon with side length 1
+distance between (3, 2) and (5, 1)
+midpoint (1, 2, 3), (2, 3, 4)
+slope of line through (2, 3) and (4, -1)
+x=1/2, y=Sqrt[3]/2 to polar
+r=2, t=pi/6 to Cartesian
+convert r=Sin[t] to cartesian
+express x^2+y^2=3 in polar
+equation of line through (2, 5), (4, 1)
+equation of line with x intercept -4 and y intercept 3
+line with y intercept -4 and slope 5
+
+
+Statistics
+average of {1, 2, 3, 4, 5, 6, 7}
+median {5, 3, 2, -4, 7, 1}
+mode of {1, 5, 4, 2, 3, 4, 5, 11, 4, 11, 20}
+4th root ########## geometric mean 4, 2, 1, 6
+variance 4, 6, 7, 9, 10, 11
+standard deviation -3, 2, -39, 1, 9, 11, 5
+quartile of {1, 2, 3, 4, 5, 6}
+find the range of 2, 5, 9, 15, 7, 4, 12, 3, 9
+
+
+Calculus & Analysis
+d/dx sqrt(x)
+derivative of x^4 + 9x^3 + 7x - 2 local max, min, der, int, def int
+slope of log(t) / (t^2 + 1)
+partial derivative of exp(-x^2 - y^2)
+partial derivative of cos( 3 pi /4 * x + 5 pi /3 * y + pi / 2 * z) with respect to y
+local extrema of x^3 - 3x + 1
+############## local extrema of x^3 - 3x + 1
+############## find the extrema of 3x^4 - 4x^3 - 12x^2 + 1
+maximize sin(x)
+inflection points x^3 - 3 x^2 + 1
+points of inflection t * cbrt(t^2 - 4)
+inflection points of 3sin(2x)
+############## inflection pts sgn(x)|x|^(3/2) + x^3 - 3x^2 + 1 over -2 < x < 3
+integrate sin(x)cos(x)^2
+integral of sqrt(a^2 - x^2)
+show the integration: arcsec(sqrt(t))
+integrate sin(t)^2cos(t) from 0 to pi/2
+integrate 1/(x^2 + 1), x = -infinity ... infinity
+integrate 1/(cos(x) + 2) from 0 to 2pi
+tangent line to sin(x) - 1 at x=0
+tangent line of y=x^2 at x=1
+tangent plane to z=x^2+y^2 at x=1,y=1
+area between 1/2x(x-2)(x+2) and x
+area of the region between y=x and y=x^2 for -1/2<x<1
+limit of (x - 3) / (x^2 - 2x - 3) as x approaches 3
+take the limit as x goes to infinity: (1 + 1/x)^x
+limit t*tan(t) as t->pi/2 from the left
+lim (x^2 + 2x + 3)/(x^2 - 2x - 3) as x->3+
+where is (x^2 - 4)/(x^2 - 2x - 3) discontinuous?
+discontinuities of sin((x^2-x)/(x-1)) + log(sqrt(abs(x)))
+arc length of Sin[x] for x between 0 and 2pi
+arc length of r=theta^2 for 0<theta<2pi
+############### arc length of {Sin[x], Cos[x], x, x} for 0<x<3pi
+
+Differential Equations
+############ solve y' = y^2 x
+############ y'(t) - 2y(t) = 3 e^(2t)
+############ t^2 y'(t) + 2t y(t) = t^4 y(t)^2 + 4
+############ y''+ y = sin(2x)
+
+
+Discrete Mathematics
+############ is 73 prime?
+lcm(90, 342)
+are 12 and 21 coprime?
+convert 33ab3653 base 12 to base 10
+
+
+Linear Algebra
+~~~~~~~~~~~~ {{2,4,4},{1,2,2},{0,7,3}}
+determinant of {{1,2,1}, {1,1,0}, {0,1,1}}
+eigenvalues {{3,-1},{0,2}}
+(1,2,3)x(3,4,5)
+
+
+Proofs
+Prove (1 + tan(x))/(1 - tan(x)) = (cos(x) + sin(x))/(cos(x) - sin(x))
+prove by induction sum of j from 1 to n = n(n+1)/2 for n>0
+using induction, prove 9^n-1 is divisible by 4 assuming n>0
+prove by induction (3n)! > 3^n (n!)^3 for n>0

@@ -3,10 +3,11 @@ document.querySelector('#solver-form').addEventListener("submit", e => {
 
     // Clears any previous results on page
     document.querySelector('.reveal-buttons').innerHTML = "";
-    document.querySelector('.solver-results').innerHTML = "";
+    document.querySelector('.results-inner').innerHTML = "";
 
     // Method for sending request to Wolfram API
     let baseURL = "https://cors-anywhere.herokuapp.com/https://api.wolframalpha.com/v2/query";
+    // let baseURL = "https://api.wolframalpha.com/v2/query";
     let appID = "HGP984-WK53RHXL47";
     let query = document.querySelector('#solver-form-input').value;
     console.log(query);
@@ -28,18 +29,40 @@ document.querySelector('#solver-form').addEventListener("submit", e => {
     // a different pod from the API will be saved in here
     let solution = [];
 
+
     // Searches for a pod of the response that would contain a step by step solution
     pods.forEach(pod => {
-        if (['Result', 'Results', 'Solution', 'Solutions', 'Local maximum', 'Local minimum'].includes(pod.title)){
+        if (['Result', 'Results', 'Solution', 'Solutions', 'Exact result', 'Differential equation solutions', 
+            'Decimal approximation'].includes(pod.title)) {
             let subpods = pod.subpods;
             solution.push(subpods);
-        }      
+        }
     })
     console.log(solution);
 
-    // If there's no step by step solution just push the first pod
+
+    // If there's no step by step solution with those headings just push the first pod if there's 
+    // not a stepby step in the second pod
     if (solution.length == 0) {
-       solution.push(pods[0].subpods);
+        if (pods.length > 1 && pods[0].title === "Input interpretation") {
+            let stepByStepExists = false;
+            for (let i = 0; i < pods[1].subpods.length; i++) {
+                if (pods[1].subpods[i].title === "Possible intermediate steps") {
+                    stepByStepExists = true;
+                }
+            }
+            if (stepByStepExists === true) {
+                solution.push(pods[1].subpods);
+            } else {
+                solution.push(pods[0].subpods);
+            }
+        } else {
+            solution.push(pods[0].subpods);
+        }
+    }
+
+    if (solution.length == 0) {
+        solution.push(pods[0].subpods);
     }
     console.log(solution);
 
@@ -48,12 +71,21 @@ document.querySelector('#solver-form').addEventListener("submit", e => {
     if (solution[0].length === 1) {
         steps = solution[0][0].mathml;
         if (steps === undefined) {
-            steps = solution[0][0].plaintext;;
+            steps = solution[0][0].plaintext;
         }
-    } else if (solution[0][1].title === "Possible intermediate steps") {
-        steps = solution[0][1].mathml;
+    } else {
+        let stepByStepExists = false;
+        for (let i = 0; i < solution[0].length; i++) {
+            if (solution[0][i].title === "Possible intermediate steps") {
+                stepByStepExists = true;
+                steps = solution[0][i].mathml;
+            }
+        }
+        if (stepByStepExists === false) {
+            steps = solution[0][0].mathml;
+        }
     }
-    
+
     console.log(steps);
 
     // Fixes some formatting bugs that were happening when getting the solution in MathML format
@@ -63,18 +95,19 @@ document.querySelector('#solver-form').addEventListener("submit", e => {
     console.log(steps);
 
     // Inserts the MathML solution into the html page
-    document.querySelector('.solver-results').innerHTML += steps;
+    document.querySelector('.results-inner').innerHTML += steps;
 
     // Reloads Mathjax to read the MathMl inserted into the HTML
     MathJax.typeset();
-
+    debugger;
     // Now will create buttons from the MathJax elements loaded to the page and 
     // add funtionality to reveal a step of the solution
     let rows = Array.from(document.querySelectorAll('mjx-math > mjx-mtable > mjx-table > mjx-itable > mjx-mtr'));
     console.log(rows);
     let i;
     let btn;
-    
+
+
     for (i = 0; i < rows.length - 1; i++) {
         rows[i].id = `step${i+1}`;
         rows[i].classList.add('step');
@@ -94,38 +127,44 @@ document.querySelector('#solver-form').addEventListener("submit", e => {
         addClickToButton(btn, `step${i+1}`);
     }
 
-    //Make Reveal All Button
-    btn = document.createElement("button");
-    btn.innerHTML = `Reveal All Steps`;
-    btn.id = 'reveal-all-button';
-    btn.classList.add('reveal-button');
-    console.log(btn);
-    document.querySelector(".reveal-buttons").prepend(btn);
-    addClickToButton(btn, 'reveal-all');
+    // If the answer has steps
+    if (rows.length > 1) {
+        //Make Reveal All Button
+        btn = document.createElement("button");
+        btn.innerHTML = `Reveal All Steps`;
+        btn.id = 'reveal-all-button';
+        btn.classList.add('reveal-button');
+        console.log(btn);
+        document.querySelector(".reveal-buttons").prepend(btn);
+        addClickToButton(btn, 'reveal-all');
 
-    // Make Answer Div & Button
-    console.log(rows);
-    rows[rows.length - 1].id = `answer`;
-    rows[rows.length - 1].classList.add('step');
-    document.querySelector(`mjx-mtr#answer mjx-mtr:nth-child(1)`).classList.add('step-text');
-    document.querySelector(`mjx-mtr#answer mjx-mtr:nth-child(2)`).classList.add('step-equation');
+        // Make Answer Div & Button
+        console.log(rows);
+        rows[rows.length - 1].id = `answer`;
+        rows[rows.length - 1].classList.add('step');
+        document.querySelector(`mjx-mtr#answer mjx-mtr:nth-child(1)`).classList.add('step-text');
+        document.querySelector(`mjx-mtr#answer mjx-mtr:nth-child(2)`).classList.add('step-equation');
 
-    btn = document.createElement("button");
-    btn.innerHTML = "Reveal Answer";
-    btn.id = "answer-button";
-    btn.classList.add('reveal-button');
-    console.log(btn);
-    addClickToButton(btn, 'answer');
-    document.querySelector(".reveal-buttons").append(btn);
-    btn.style.visibility = "hidden";
-    
-    
-    
+        btn = document.createElement("button");
+        btn.innerHTML = "Reveal Answer";
+        btn.id = "answer-button";
+        btn.classList.add('reveal-button');
+        console.log(btn);
+        addClickToButton(btn, 'answer');
+        document.querySelector(".reveal-buttons").append(btn);
+        btn.style.visibility = "hidden";
+    } else {
+        message = document.createElement("h3");
+        message.id = "error-message";
+        message.innerHTML = "Sorry, step by step <br>solution could not <br>be found. You may <br>need to be more <br>specific in your query."
+        document.querySelector(".reveal-buttons").append(message);
+    }
+
     // Display the results and scroll the page down to the div
     document.querySelector('section.results').style.display = "block";
     const navbarBottomY = document.querySelector('nav.navbar').getBoundingClientRect().bottom;
     const bottomKeyboardY = document.querySelector('section.solver-buttons').getBoundingClientRect().bottom;
-    
+
     if (bottomKeyboardY <= navbarBottomY) {
         window.scroll({
             top: bottomKeyboardY,
@@ -137,20 +176,20 @@ document.querySelector('#solver-form').addEventListener("submit", e => {
             behavior: 'smooth'
         });
     }
-    
-    
+
+
 });
 
 function addClickToButton(btn, id) {
-    btn.addEventListener('click', ()=>{
+    btn.addEventListener('click', () => {
         if (btn.id === "reveal-all-button") {
             let steps = Array.from(document.querySelectorAll('mjx-math > mjx-mtable > mjx-table > mjx-itable > mjx-mtr'));
             let stepButtons = Array.from(document.querySelectorAll('.reveal-buttons > button'));
             console.log(stepButtons);
-            steps.forEach(step=>{
+            steps.forEach(step => {
                 step.style.visibility = "visible";
             })
-            stepButtons.forEach(button=>{
+            stepButtons.forEach(button => {
                 button.style.visibility = "visible";
             })
         } else if (btn.id === "answer-button") {
@@ -161,4 +200,3 @@ function addClickToButton(btn, id) {
         }
     })
 }
-
