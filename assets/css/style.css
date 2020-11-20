@@ -627,6 +627,10 @@ button:hover, button:active, button:focus {
     overflow-x: auto;
 }
 
+.results-inner > .MathJax {
+    position: static !important;
+}
+
 .step {
     visibility: hidden;
 }
