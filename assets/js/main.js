@@ -156,7 +156,7 @@ document.querySelector('#solver-form').addEventListener("submit", e => {
     } else {
         message = document.createElement("h3");
         message.id = "error-message";
-        message.innerHTML = "Sorry, step by step <br>solution could not <br>be found. You may <br>need to be more <br>specific in your query."
+        message.innerHTML = "Sorry, step by step <br>solution could not <br>be found. <br><br> Showing just the result. <br><br>If the result isn't as expected <br>you may need to be more <br>specific in your query."
         document.querySelector(".reveal-buttons").append(message);
     }
 

@@ -2,9 +2,8 @@
 
 function dropdownChanged(value) {
     let input = document.querySelector('#solver-form-input');
-    let textCursor = input.selectionEnd;
-    let textBefore = input.value.slice(0, textCursor);
-    let textAfter = input.value.slice(textCursor, input.value.length);
+    input.value = "";
+    let textCursor = 0;
     console.log(value);
     switch (value) {
         case "calculate":
@@ -73,11 +72,11 @@ function dropdownChanged(value) {
             break;
         default:
             break;
+    }
     // Set the cursor to the input
     input.focus();
     input.setSelectionRange(textCursor, textCursor);
     return
-    }
 }
 
 let dropdown = document.querySelector('#methods-selector');
@@ -185,7 +184,7 @@ function solverButtonClicked(button) {
             input.value = `${textBefore}(  )th root of (  )${textAfter}`;
             textCursor =  textCursor+2;
             break;
-        case "sqaure-root":
+        case "square-root":
             input.value = `${textBefore}sqrt(  )${textAfter}`;
             textCursor =  textCursor+6;
             break;
