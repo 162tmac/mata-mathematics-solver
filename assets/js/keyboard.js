@@ -4,7 +4,6 @@ function dropdownChanged(value) {
     let input = document.querySelector('#solver-form-input');
     input.value = "";
     let textCursor = 0;
-    console.log(value);
     switch (value) {
         case "calculate":
             input.value = `Calculate ${input.value}`;
@@ -80,7 +79,6 @@ function dropdownChanged(value) {
 }
 
 let dropdown = document.querySelector('#methods-selector');
-console.log(dropdown);
 dropdown.addEventListener ('change', ()=>{
     dropdownChanged(dropdown.value);
 })
@@ -93,7 +91,6 @@ function solverButtonClicked(button) {
     let textCursor = input.selectionEnd;
     let textBefore = input.value.slice(0, textCursor);
     let textAfter = input.value.slice(textCursor, input.value.length);
-    console.log(input, textCursor);
     let mediaQuery = window.matchMedia("screen and (min-width: 900px)");
     switch (id) {
         case "log":

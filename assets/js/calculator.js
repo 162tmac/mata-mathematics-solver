@@ -41,8 +41,6 @@ const equalsButton = document.querySelector('.key--equals');
 let currentDisplay = document.querySelector('#display-current');
 let previousDisplay = document.querySelector('#display-previous');
 
-console.log(operatorButtons, numberButtons, backspaceButton, clearButton, equalsButton, currentDisplay, previousDisplay)
-
 // Functions for calculator
 
 // Takes a number, converts it to a string and 
@@ -69,7 +67,6 @@ function numberToDisplay(number) {
 
 // Converts string from display to number
 function displayToNumber(displayNumber) {
-    console.log(displayNumber);
     let number = displayNumber.replaceAll(',', "");
     return number;
 }
@@ -82,14 +79,12 @@ function addNumToDisplay(number) {
     let current = displayToNumber(currentDisplay.innerHTML);
     current = current.toString() + number.toString();
     currentDisplay.innerHTML = numberToDisplay(current);
-    console.log(currentDisplay.innerHTML);
 }
 
 function compute(previous, current, operator) {
     let result;
     previous = displayToNumber(previous);
     current = displayToNumber(current);
-    console.log(previous, current, operator);
     switch(operator) {
         case "+":
             result = parseFloat(previous) + parseFloat(current)
@@ -120,8 +115,7 @@ numberButtons.forEach(number => {
         if (currentDisplay.innerHTML === "NaN") {
             currentDisplay.innerHTML = "&nbsp;";
         }
-        addNumToDisplay(number.innerHTML)
-        console.log(number.innerHTML)
+        addNumToDisplay(number.innerHTML);
     })
 })
 
@@ -143,9 +137,7 @@ operatorButtons.forEach(operator => {
 })
 
 equalsButton.addEventListener('click', () => {
-    console.log(previousDisplay.innerHTML.slice(-1));
     if (["+", "-", "×", "÷"].includes(previousDisplay.innerHTML.slice(-1))) {
-        console.log(previousDisplay.innerHTML.slice(0, -2), currentDisplay.innerHTML, previousDisplay.innerHTML.slice(-1));
         let result = compute(previousDisplay.innerHTML.slice(0, -2), currentDisplay.innerHTML, previousDisplay.innerHTML.slice(-1))
         previousDisplay.innerHTML = "&nbsp;"
         currentDisplay.innerHTML = `${result}`;

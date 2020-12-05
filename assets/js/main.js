@@ -10,20 +10,16 @@ document.querySelector('#solver-form').addEventListener("submit", e => {
     // let baseURL = "https://api.wolframalpha.com/v2/query";
     let appID = "HGP984-WK53RHXL47";
     let query = document.querySelector('#solver-form-input').value;
-    console.log(query);
     let queryURL = encodeURIComponent(query);
-    console.log(queryURL);
 
     let fullURL = `${baseURL}?appid=${appID}&input=${queryURL}&podstate=Step-by-step%20solution&output=JSON&format=image,plaintext,mathml`
 
     let xhr = new XMLHttpRequest();
     xhr.open('GET', fullURL, false);
     xhr.send(null);
-
+    debugger;
     data = JSON.parse(xhr.responseText);
-    console.log(data);
     let pods = data.queryresult.pods;
-    console.log(pods);
 
     // Will hold the step by step solution of the query. If there is no step byt step solution, 
     // a different pod from the API will be saved in here
@@ -38,7 +34,6 @@ document.querySelector('#solver-form').addEventListener("submit", e => {
             solution.push(subpods);
         }
     })
-    console.log(solution);
 
 
     // If there's no step by step solution with those headings just push the first pod if there's 
@@ -64,7 +59,6 @@ document.querySelector('#solver-form').addEventListener("submit", e => {
     if (solution.length == 0) {
         solution.push(pods[0].subpods);
     }
-    console.log(solution);
 
     let steps;
 
@@ -79,6 +73,9 @@ document.querySelector('#solver-form').addEventListener("submit", e => {
             if (solution[0][i].title === "Possible intermediate steps") {
                 stepByStepExists = true;
                 steps = solution[0][i].mathml;
+                if (steps.includes("merror")) {
+                    steps = solution[0][0].mathml;
+                }
             }
         }
         if (stepByStepExists === false) {
@@ -86,13 +83,12 @@ document.querySelector('#solver-form').addEventListener("submit", e => {
         }
     }
 
-    console.log(steps);
-
     // Fixes some formatting bugs that were happening when getting the solution in MathML format
     steps = steps.replaceAll(' </mtext>', '&nbsp</mtext>');
     steps = steps.replaceAll('</mn>', '&nbsp</mn>');
     steps = steps.replaceAll('<mi>integral</mi>', '<mi>&int;</mi>');
-    console.log(steps);
+    steps = steps.replaceAll('<merror>', '<mi>');
+    steps = steps.replaceAll('</merror>', '</mi>');
 
     // Inserts the MathML solution into the html page
     document.querySelector('.results-inner').innerHTML += steps;
@@ -103,7 +99,6 @@ document.querySelector('#solver-form').addEventListener("submit", e => {
     // Now will create buttons from the MathJax elements loaded to the page and 
     // add funtionality to reveal a step of the solution
     let rows = Array.from(document.querySelectorAll('mjx-math > mjx-mtable > mjx-table > mjx-itable > mjx-mtr'));
-    console.log(rows);
     let i;
     let btn;
 
@@ -117,7 +112,6 @@ document.querySelector('#solver-form').addEventListener("submit", e => {
         btn = document.createElement("button");
         btn.innerHTML = `Reveal Step ${i+1}`;
         btn.classList.add('reveal-button');
-        console.log(btn);
         document.querySelector(".reveal-buttons").append(btn);
 
         if (i != 0) {
@@ -134,12 +128,10 @@ document.querySelector('#solver-form').addEventListener("submit", e => {
         btn.innerHTML = `Reveal All Steps`;
         btn.id = 'reveal-all-button';
         btn.classList.add('reveal-button');
-        console.log(btn);
         document.querySelector(".reveal-buttons").prepend(btn);
         addClickToButton(btn, 'reveal-all');
 
         // Make Answer Div & Button
-        console.log(rows);
         rows[rows.length - 1].id = `answer`;
         rows[rows.length - 1].classList.add('step');
         document.querySelector(`mjx-mtr#answer mjx-mtr:nth-child(1)`).classList.add('step-text');
@@ -149,7 +141,6 @@ document.querySelector('#solver-form').addEventListener("submit", e => {
         btn.innerHTML = "Reveal Answer";
         btn.id = "answer-button";
         btn.classList.add('reveal-button');
-        console.log(btn);
         addClickToButton(btn, 'answer');
         document.querySelector(".reveal-buttons").append(btn);
         btn.style.visibility = "hidden";
@@ -185,7 +176,6 @@ function addClickToButton(btn, id) {
         if (btn.id === "reveal-all-button") {
             let steps = Array.from(document.querySelectorAll('mjx-math > mjx-mtable > mjx-table > mjx-itable > mjx-mtr'));
             let stepButtons = Array.from(document.querySelectorAll('.reveal-buttons > button'));
-            console.log(stepButtons);
             steps.forEach(step => {
                 step.style.visibility = "visible";
             })
