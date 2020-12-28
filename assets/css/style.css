@@ -381,7 +381,7 @@ button:hover, button:active, button:focus {
 
 #keyboard-buttons > .key-sm-mathjax  {
     font-weight: 900;
-    font-size: 1.5em;
+    font-size: 1.2em;
 }
 
 #keyboard-buttons > .key-lg-mathjax  {
@@ -701,13 +701,14 @@ button:hover, button:active, button:focus {
 }
 
 .how-to-paragraph {
-    font-family: sans-serif;
-    font-weight: 300;
+    font-family: 'Josefin Sans';
+    font-weight: 600;
+    font-size: 1.2em;
 }
 
 .how-to-paragraph-heading {
     font-family: 'Josefin Sans';
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: 900;
     text-decoration: underline;
 }
