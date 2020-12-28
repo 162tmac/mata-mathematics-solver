@@ -85,9 +85,18 @@
         <main class="solver">
             <div class="calculator-blocker" onclick="hideSidebar()"></div>
 
+            <div id="how-to-banner">
+                <div id="banner-text">
+                    <a href="howto.html">
+                        Unsure where to start? Click here to see the how to use section.
+                    </a>
+                </div>
+                <button id="banner-close-button" onclick="hideBanner();"><i class="fa fa-times" aria-hidden="true"></i></button>
+            </div>
+
             <section class="solver-input">
                 <form id="solver-form">
-                    <input type="text" id="solver-form-input" autocomplete="off">
+                    <input type="text" id="solver-form-input" placeholder="Input your math problem here..." autocomplete="off">
                 </form>
                 <div class="input-buttons">
                     <select name="methods-selector" id="methods-selector">

@@ -190,3 +190,7 @@ function addClickToButton(btn, id) {
         }
     })
 }
+
+function hideBanner() {
+    let banner = document.querySelector('#how-to-banner').style.display = "none";
+}
