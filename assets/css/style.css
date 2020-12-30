@@ -337,24 +337,13 @@ button:hover, button:active, button:focus {
     align-items: center;
 }
 
-#methods-selector {
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 300;
-    margin-right: 5px;
-    font-size: 1rem;
-    padding: 0.5rem 0.75rem;
-    color: #fafafa;
-    background-color: #1F1E1F;
-    border-radius: 0.5rem;
-}
-
 #solver-form-submit {
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 300;
     padding: 0.25rem 0.5rem;
     color: #fafafa;
     background-color: #343233;
-    font-size: 1rem;
+    font-size: 1.2rem;
     cursor: pointer;
     border: none;
     border-radius: 0.5rem;
