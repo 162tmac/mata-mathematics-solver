@@ -103,8 +103,9 @@ The W3C Markup Validator and W3C CSS Validator Services were used to validate ev
 
 * As a First Time Visitor, I want to understand what the website does and how to use it.
 
-    1. When the user enters the site, they can see a input field and a keyboard where they can input their math queries.
-    2. The how to section in the navigation bar shows the user how to use the solver.
+    1. There is a banner when landing on the page that directs the user to the how to use section if they want to understand how to use the solver.
+    2. When the user enters the site, they can see a input field and a keyboard where they can input their math queries.
+    3. The how to section in the navigation bar shows the user how to use the solver.
 
 * As a First Time Visitor, I want to easily navigate the site through intuitive calls to action.
 
@@ -114,7 +115,8 @@ The W3C Markup Validator and W3C CSS Validator Services were used to validate ev
 
 * As a First Time Visitor, I want to see the solver in action.
     1. The how to page shows exactly how to use the solver so users can get to work quickly.
-    2. The query bar is the first thing the user sees and their attention is drawn to using it. The keyboard and dropdown gives the user multiple calls to action to use it.
+    2. The query bar is the first thing the user sees and their attention is drawn to using it. The keyboard gives the user multiple calls to action to use it.
+    3. There examples page gives the users a range of example queries to input into the solver.
 
 #### Returning User Goals
 
