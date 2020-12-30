@@ -269,7 +269,7 @@ button:hover, button:active, button:focus {
 
 #how-to-banner {
     width: 100%;
-    height: 1rem;
+    height: auto;
     padding: 10px 0;
     background-color: lightsalmon;
     display: flex;
@@ -277,10 +277,12 @@ button:hover, button:active, button:focus {
     justify-content: center;
     border-bottom: 1px solid lightgrey;
     position: relative;
+    text-align: center;
 }
 
 #banner-text {
     text-decoration: none;
+    margin: 0 20px 0 10px;
 }
 
 #banner-close-button {
@@ -930,7 +932,6 @@ button:hover, button:active, button:focus {
     }
 
     .solver-input {
-        margin-top: 5rem;
         padding: 0;
     }
 
@@ -965,11 +966,11 @@ button:hover, button:active, button:focus {
         width: 100%;
     }
 
-    main.how-to-use {
+    main.how-to-use, main.examples {
         padding: 1rem 0 0 0;
     }
 
-    .how-to-container {
+    .how-to-container, .examples-container {
         width: 90%;
         padding:0.5rem;
         margin: 0 auto;

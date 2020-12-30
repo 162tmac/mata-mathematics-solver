@@ -6,7 +6,7 @@
 - 7^3
 - sqrt 1801
 - 1/6 + 5/12 + 3/4
-- 3/8 * 2/7 ############## Scroll Problem
+- 3/8 * 2/7
 - 1/4 * (4 - 1/2)
 - place values of 6135
 - value of the digit 3 in 23904
@@ -17,8 +17,8 @@
 - negative number ^ 40
 - negative integer / positive integer
 - rational number + positive even
-- ############# Rachel has 17 apples. She gives 9 to Sarah. How many apples does Rachel have now? 
-- ############# Rhonda has 12 marbles more than Douglas. Douglas has 6 marbles more than Bertha. Rhonda has twice as many marbles as Bertha has. How many marbles does Douglas have?
+- Rachel has 17 apples. She gives 9 to Sarah. How many apples does Rachel have now? 
+- Rhonda has 12 marbles more than Douglas. Douglas has 6 marbles more than Bertha. Rhonda has twice as many marbles as Bertha has. How many marbles does Douglas have?
 
 
 ## Algebra
@@ -26,18 +26,14 @@
 - (x - 1)(x + 3)^2 + 7 where x = 2
 - x + y = 1, x - y = 3
 - solve 3x - y - z = 2, x + 2y - 3z = -12, 2x + y + 3z = 9
-- ############ x intercepts of sin(x)
-- ############ y intercept of x^2+1
-- ############ intercepts of (x^2+2)(x^2-1)
 - solution to 2x - 3 = 1
 - x^2 + 5x + 6 = 0
 - solve (9^(x + 1)) - (28 (3^(x))) + 3 = 0 over the real numbers
 - solve sin(t) + cos(t) = 1
-- ############# rational solutions of x^3 - 3x + 2 'Candidate roots from rational root theorem' but also cycle through each pod in solution
 - simplify (1/a + 1/b) (a + b)
-- ############# k/(k + 1) + 1/((k + 1) (k + 2)) meh user just needs to be more specific
+- k/(k + 1) + 1/((k + 1) (k + 2)) - user just needs to be more specific
 - partial fraction decomposition 1/(x^2 + 4x + 3)
-- ############# 1/(x^3 + 4x^2 + 5x + 2) meh user just needs to be more specific
+-  1/(x^3 + 4x^2 + 5x + 2) - user just needs to be more specific
 - factor x^3 - 8
 - factorization of x^4+4
 - factor x^3+2x^2+x+2
@@ -67,7 +63,7 @@
 - average of {1, 2, 3, 4, 5, 6, 7}
 - median {5, 3, 2, -4, 7, 1}
 - mode of {1, 5, 4, 2, 3, 4, 5, 11, 4, 11, 20}
-- 4th root ########## geometric mean 4, 2, 1, 6
+- geometric mean 4, 2, 1, 6
 - variance 4, 6, 7, 9, 10, 11
 - standard deviation -3, 2, -39, 1, 9, 11, 5
 - quartile of {1, 2, 3, 4, 5, 6}
@@ -81,13 +77,10 @@
 - partial derivative of exp(-x^2 - y^2)
 - partial derivative of cos( 3 pi /4 * x + 5 pi /3 * y + pi / 2 * z) with respect to y
 - local extrema of x^3 - 3x + 1
-- ############## local extrema of x^3 - 3x + 1
-- ############## find the extrema of 3x^4 - 4x^3 - 12x^2 + 1
 - maximize sin(x)
 - inflection points x^3 - 3 x^2 + 1
 - points of inflection t * cbrt(t^2 - 4)
 - inflection points of 3sin(2x)
-- ############## inflection pts sgn(x)|x|^(3/2) + x^3 - 3x^2 + 1 over -2 < x < 3
 - integrate sin(x)cos(x)^2
 - integral of sqrt(a^2 - x^2)
 - show the integration: arcsec(sqrt(t))
@@ -107,18 +100,18 @@
 - discontinuities of sin((x^2-x)/(x-1)) + log(sqrt(abs(x)))
 - arc length of Sin[x] for x between 0 and 2pi
 - arc length of r=theta^2 for 0<theta<2pi
-- ############### arc length of {Sin[x], Cos[x], x, x} for 0<x<3pi
 
 
 ## Differential Equations
-- ############ solve y' = y^2 x
-- ############ y'(t) - 2y(t) = 3 e^(2t)
-- ############ t^2 y'(t) + 2t y(t) = t^4 y(t)^2 + 4
-- ############ y''+ y = sin(2x)
+***** Bugs with all these
+- solve y' = y^2 x
+- y'(t) - 2y(t) = 3 e^(2t)
+- t^2 y'(t) + 2t y(t) = t^4 y(t)^2 + 4
+- y''+ y = sin(2x)
 
 
 ## Discrete Mathematics
-- ############ is 73 prime?
+- Is 73 prime?
 - lcm(90, 342)
 - are 12 and 21 coprime?
 - convert 33ab3653 base 12 to base 10

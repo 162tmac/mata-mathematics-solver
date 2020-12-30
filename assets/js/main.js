@@ -17,7 +17,6 @@ document.querySelector('#solver-form').addEventListener("submit", e => {
     let xhr = new XMLHttpRequest();
     xhr.open('GET', fullURL, false);
     xhr.send(null);
-    debugger;
     data = JSON.parse(xhr.responseText);
     let pods = data.queryresult.pods;
 
@@ -95,7 +94,6 @@ document.querySelector('#solver-form').addEventListener("submit", e => {
 
     // Reloads Mathjax to read the MathMl inserted into the HTML
     MathJax.typeset();
-    debugger;
     // Now will create buttons from the MathJax elements loaded to the page and 
     // add funtionality to reveal a step of the solution
     let rows = Array.from(document.querySelectorAll('mjx-math > mjx-mtable > mjx-table > mjx-itable > mjx-mtr'));
