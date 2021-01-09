@@ -92,10 +92,8 @@ it currently doesn't support.
 
 The W3C Markup Validator and W3C CSS Validator Services were used to validate every page of the project to ensure there were no syntax errors in the project.
 
-/*/*//*//*/*/*/*//*/*/*/*/*/*/*/TODO
-
--   [W3C Markup Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) - [Results](https://github.com/)
--   [W3C CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) - [Results](https://github.com/)
+-   [W3C Markup Validator](https://validator.w3.org/)
+-   [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
 
 ### Testing User Stories from User Experience (UX) Section
 
@@ -140,7 +138,7 @@ The W3C Markup Validator and W3C CSS Validator Services were used to validate ev
 -   The site was tested for responsiveness and design on desktops, tablets and smartphone.
 -   I had a couple of my friends who work as developers test the site also to try to find bugs.
 -   A large amount of testing was done to check that the solver was working for many different math problems. There is a list of the extensive test queries I ran here:
-    - [Mata Tests](tests.md)
+    - [Mata Tests](tests.txt)
 
 ### Known Bugs
 
