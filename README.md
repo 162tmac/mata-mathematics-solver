@@ -126,6 +126,7 @@ The W3C Markup Validator, W3C CSS Validator Services & JSHint were used to valid
 
 
 3. **As a First Time Visitor, I want to see the solver in action.**
+
     i. The how to page shows exactly how to use the solver so users can get to work quickly.
 
     ![How to use](assets/images/readme-images/howt-to-use.png)
