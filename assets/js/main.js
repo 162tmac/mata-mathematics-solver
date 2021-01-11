@@ -11,12 +11,12 @@ document.querySelector('#solver-form').addEventListener("submit", e => {
     let query = document.querySelector('#solver-form-input').value;
     let queryURL = encodeURIComponent(query);
 
-    let fullURL = `${baseURL}?appid=${appID}&input=${queryURL}&podstate=Step-by-step%20solution&output=JSON&format=image,plaintext,mathml`
+    let fullURL = `${baseURL}?appid=${appID}&input=${queryURL}&podstate=Step-by-step%20solution&output=JSON&format=image,plaintext,mathml`;
 
     let xhr = new XMLHttpRequest();
     xhr.open('GET', fullURL, false);
     xhr.send(null);
-    data = JSON.parse(xhr.responseText);
+    let data = JSON.parse(xhr.responseText);
     let pods = data.queryresult.pods;
 
     // Will hold the step by step solution of the query. If there is no step byt step solution, 
@@ -31,7 +31,7 @@ document.querySelector('#solver-form').addEventListener("submit", e => {
             let subpods = pod.subpods;
             solution.push(subpods);
         }
-    })
+    });
 
 
     // If there's no step by step solution with those headings just push the first pod if there's 
@@ -142,9 +142,9 @@ document.querySelector('#solver-form').addEventListener("submit", e => {
         document.querySelector(".reveal-buttons").append(btn);
         btn.style.visibility = "hidden";
     } else {
-        message = document.createElement("h3");
+        let message = document.createElement("h3");
         message.id = "error-message";
-        message.innerHTML = "Sorry, step by step <br>solution could not <br>be found. <br><br> Showing just the result. <br><br>If the result isn't as expected <br>you may need to be more <br>specific in your query."
+        message.innerHTML = "Sorry, step by step <br>solution could not <br>be found. <br><br> Showing just the result. <br><br>If the result isn't as expected <br>you may need to be more <br>specific in your query.";
         document.querySelector(".reveal-buttons").append(message);
     }
 
@@ -176,19 +176,20 @@ function addClickToButton(btn, id) {
             let stepButtons = Array.from(document.querySelectorAll('.reveal-buttons > button'));
             steps.forEach(step => {
                 step.style.visibility = "visible";
-            })
+            });
             stepButtons.forEach(button => {
                 button.style.visibility = "visible";
-            })
+            });
         } else if (btn.id === "answer-button") {
             document.querySelector("#answer").style.visibility = "visible";
         } else {
             btn.nextSibling.style.visibility = "visible";
             document.querySelector(`#${id}`).style.visibility = "visible";
         }
-    })
+    });
 }
 
 function hideBanner() {
-    let banner = document.querySelector('#how-to-banner').style.display = "none";
+    let banner = document.querySelector('#how-to-banner');
+    banner.style.display = "none";
 }

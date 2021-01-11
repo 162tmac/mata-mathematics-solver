@@ -56,7 +56,7 @@ function numberToDisplay(number) {
     if (isNaN(wholeNums)) {
         formatted = "0";
     } else {
-        formatted = wholeNums.toLocaleString('en', { maximumFractionDigits: 0 })
+        formatted = wholeNums.toLocaleString('en', { maximumFractionDigits: 0 });
     }
     if (decimalNums != null) {
         return formatted + '.' + decimalNums;
@@ -87,13 +87,13 @@ function compute(previous, current, operator) {
     current = displayToNumber(current);
     switch(operator) {
         case "+":
-            result = parseFloat(previous) + parseFloat(current)
+            result = parseFloat(previous) + parseFloat(current);
             break;
         case "-":
-            result = parseFloat(previous) - parseFloat(current)
+            result = parseFloat(previous) - parseFloat(current);
             break;
         case "×":
-            result = parseFloat(previous) * parseFloat(current)
+            result = parseFloat(previous) * parseFloat(current);
             break;
         case "÷":
             if (current === "0") {
@@ -116,13 +116,13 @@ numberButtons.forEach(number => {
             currentDisplay.innerHTML = "&nbsp;";
         }
         addNumToDisplay(number.innerHTML);
-    })
-})
+    });
+});
 
 operatorButtons.forEach(operator => {
     operator.addEventListener('click', () => {
         if (operator.innerHTML === "-" && currentDisplay.innerHTML === "&nbsp;") {
-            addNumToDisplay("-")
+            addNumToDisplay("-");
         } else if (currentDisplay.innerHTML === "NaN" || currentDisplay.innerHTML === "&nbsp;") {
             currentDisplay.innerHTML = "&nbsp;";
         } else if (["+", "-", "×", "÷"].includes(previousDisplay.innerHTML.slice(-1))) {
@@ -133,28 +133,28 @@ operatorButtons.forEach(operator => {
             previousDisplay.innerHTML = `${currentDisplay.innerHTML} ${operator.innerHTML}`;
             currentDisplay.innerHTML = "&nbsp;";
         }
-    })
-})
+    });
+});
 
 equalsButton.addEventListener('click', () => {
     if (["+", "-", "×", "÷"].includes(previousDisplay.innerHTML.slice(-1))) {
-        let result = compute(previousDisplay.innerHTML.slice(0, -2), currentDisplay.innerHTML, previousDisplay.innerHTML.slice(-1))
-        previousDisplay.innerHTML = "&nbsp;"
+        let result = compute(previousDisplay.innerHTML.slice(0, -2), currentDisplay.innerHTML, previousDisplay.innerHTML.slice(-1));
+        previousDisplay.innerHTML = "&nbsp;";
         currentDisplay.innerHTML = `${result}`;
     } else {
         previousDisplay.innerHTML = currentDisplay.innerHTML;
         currentDisplay.innerHTML = "&nbsp;";
     }
-})
+});
 
 clearButton.addEventListener('click', ()=>{
     previousDisplay.innerHTML = "&nbsp;";
     currentDisplay.innerHTML = "&nbsp;";
-})
+});
 
 backspaceButton.addEventListener('click', ()=>{
     currentDisplay.innerHTML = currentDisplay.innerHTML.slice(0, -1);
     if (currentDisplay.innerHTML === "") {
         currentDisplay.innerHTML = "&nbsp;";
     }
-})
+});

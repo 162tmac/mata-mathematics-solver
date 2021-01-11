@@ -12,7 +12,7 @@ understand a particular topic or how to apply it to problems.
 
 It was made as my second project with the [Code Institute](https://codeinstitute.net/) in Dublin.
 
-![Mata Mockup](assets/images/mata-mockup.png)
+![Mata Mockup](assets/images/readme-images/mata-mockup.png)
 
 A live version of the site is available [here](https://162tmac.github.io/mata-mathematics-solver/).
  
@@ -90,48 +90,79 @@ it currently doesn't support.
 
 ## Testing
 
-The W3C Markup Validator and W3C CSS Validator Services were used to validate every page of the project to ensure there were no syntax errors in the project.
+The W3C Markup Validator, W3C CSS Validator Services & JSHint were used to validate every page of the project to ensure there were no syntax errors in the project.
 
 -   [W3C Markup Validator](https://validator.w3.org/)
 -   [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
+-   [JSHint](https://jshint.com/)
 
 ### Testing User Stories from User Experience (UX) Section
 
 #### First Time Visitor Goals
 
-* As a First Time Visitor, I want to understand what the website does and how to use it.
+1. **As a First Time Visitor, I want to understand what the website does and how to use it.**
 
-    1. There is a banner when landing on the page that directs the user to the how to use section if they want to understand how to use the solver.
-    2. When the user enters the site, they can see a input field and a keyboard where they can input their math queries.
-    3. The how to section in the navigation bar shows the user how to use the solver.
+    i. There is a banner when landing on the page that directs the user to the how to use section if they want to understand how to use the solver.
 
-* As a First Time Visitor, I want to easily navigate the site through intuitive calls to action.
+    ![How to banner](assets/images/readme-images/banner.png)
 
-    1. The navigation of the site is intuitive and the navbar flows easily with all links bring you to what you would expect to find.
-    2. The navbar always remains at the side for large screens and at the top for smaller devices. This allows the user to always be able to use it no matter how far they scroll down the page.
-    3. The side calculator works intuitively and directs the user away from the main solver when they use it. A blocker greys out the solver when this side calculator is in use.
+    ii. When the user enters the site, they can see a input field and a keyboard where they can input their math queries.
 
-* As a First Time Visitor, I want to see the solver in action.
-    1. The how to page shows exactly how to use the solver so users can get to work quickly.
-    2. The query bar is the first thing the user sees and their attention is drawn to using it. The keyboard gives the user multiple calls to action to use it.
-    3. There examples page gives the users a range of example queries to input into the solver.
+    ![Solver](assets/images/readme-images/solver.png)
+
+    iii. The how to section in the navigation bar shows the user how to use the solver.
+
+2. **As a First Time Visitor, I want to easily navigate the site through intuitive calls to action.**
+
+    i. The navigation of the site is intuitive and the navbar flows easily with all links bring you to what you would expect to find.
+
+    <img src="assets/images/readme-images/navbar.png" alt="Navbar" width="300">
+
+    ii. The navbar always remains at the side for large screens and at the top for smaller devices. This allows the user to always be able to use it no matter how far they scroll down the page.
+    
+    iii. The side calculator works intuitively and directs the user away from the main solver when they use it. A blocker greys out the solver when this side calculator is in use.
+
+    <img src="assets/images/readme-images/calculator.png" alt="Calculator" width="300">
+
+
+3. **As a First Time Visitor, I want to see the solver in action.**
+    i. The how to page shows exactly how to use the solver so users can get to work quickly.
+
+    ![How to use](assets/images/readme-images/howt-to-use.png)
+
+    ii. The query bar is the first thing the user sees and their attention is drawn to using it. The keyboard gives the user multiple calls to action to use it.
+
+    ![Query Bar](assets/images/readme-images/query-bar.png)
+
+    iii. There examples page gives the users a range of example queries to input into the solver.
+
+    ![Examples](assets/images/readme-images/examples.png)
+
 
 #### Returning User Goals
 
-* As a Returning Users, I want to rely on the solver for math problems from various areas of mathematics.
+1. **As a Returning Users, I want to rely on the solver for math problems from various areas of mathematics.**
 
-    1. The step by step result section works quite well for many areas of maths. 
-    2. I have tested the solver with many queries from different areas of maths, most of them taken from the examples given in the Wolfram Alpha website.
+    i. The step by step result section works quite well for many areas of maths. 
 
-* As a Returning Users, I want to use the website as an online space that I go to anytime I study mathematics.
+    ii. I have tested the solver with many queries from different areas of maths, most of them taken from the examples given in the Wolfram Alpha website.
 
-    1. The students can use to the step by step feature to get a better understanding on how to complete math problems.
-    2. The side calculator allows for smaller and quick calculations so students don't have to leave the site.
+2. **As a Returning Users, I want to use the website as an online space that I go to anytime I study mathematics.**
 
-* As a Returning User, I want to use the website to improve my skills at mathematics in an understandable way.
-    1. The solver can help student to understand more difficult questions. This is especially important for questions at the end of a problem set that are more difficult or complicated than the previous questions but from the same area of maths.
-    2. As the student uses the solver a few times it becomes much easier and intuitive to use.
-    3. The solver also can solve proofs and give the solution step by step which is often quite difficult for math students. As each step of the proofs is important, the website works well and is exact.
+    i. The students can use to the step by step feature which encourages students to work through the steps rather than just getting the answer in order to get a better understanding on how to complete math problems.
+
+    ![Step by step](assets/images/readme-images/results.png)
+
+    ii. The side calculator allows for smaller and quick calculations so students don't have to leave the site.
+
+3. **As a Returning User, I want to use the website to improve my skills at mathematics in an understandable way.**
+    i. The solver can help student to understand more difficult questions. This is especially important for questions at the end of a problem set that are more difficult or complicated than the previous questions but from the same area of maths.
+
+    ii. As the student uses the solver a few times it becomes much easier and intuitive to use.
+
+    iii. The solver also can solve proofs and give the solution step by step which is often quite difficult for math students. As each step of the proofs is important, the website works well and is exact.
+
+    ![Proofs](assets/images/readme-images/proof.png)
 
 ### Further Testing
 

@@ -210,5 +210,5 @@ let solverButtons = document.querySelectorAll("#keyboard-buttons > button");
 solverButtons.forEach(button => {
     button.addEventListener('click', () => {
         solverButtonClicked(button);
-    })
+    });
 });
