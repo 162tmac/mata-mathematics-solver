@@ -89,8 +89,8 @@ function solverButtonClicked(button) {
             textCursor =  textCursor+12;
             break;
         case "differentiate":
-            input.value = `${textBefore}derivative of ${textAfter}`;
-            textCursor =  textCursor+14;
+            input.value = `${textBefore}derivative of (  )${textAfter}`;
+            textCursor =  textCursor+16;
             break;
         case "root":
             input.value = `${textBefore}(  )th root of (  )${textAfter}`;

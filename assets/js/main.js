@@ -7,7 +7,6 @@ document.querySelector('#solver-form').addEventListener("submit", e => {
 
     // Method for sending request to Wolfram API
     let baseURL = "https://cors-anywhere.herokuapp.com/https://api.wolframalpha.com/v2/query";
-    // let baseURL = "https://api.wolframalpha.com/v2/query";
     let appID = "HGP984-WK53RHXL47";
     let query = document.querySelector('#solver-form-input').value;
     let queryURL = encodeURIComponent(query);
@@ -94,12 +93,12 @@ document.querySelector('#solver-form').addEventListener("submit", e => {
 
     // Reloads Mathjax to read the MathMl inserted into the HTML
     MathJax.typeset();
+
     // Now will create buttons from the MathJax elements loaded to the page and 
     // add funtionality to reveal a step of the solution
     let rows = Array.from(document.querySelectorAll('mjx-math > mjx-mtable > mjx-table > mjx-itable > mjx-mtr'));
     let i;
     let btn;
-
 
     for (i = 0; i < rows.length - 1; i++) {
         rows[i].id = `step${i+1}`;
@@ -169,6 +168,7 @@ document.querySelector('#solver-form').addEventListener("submit", e => {
 
 });
 
+// Add the reveal click functionality to the buttons
 function addClickToButton(btn, id) {
     btn.addEventListener('click', () => {
         if (btn.id === "reveal-all-button") {
